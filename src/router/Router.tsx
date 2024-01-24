@@ -1,10 +1,10 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Image } from 'react-native';
 import { Colors } from '../constants/Colors';
-import { BOTTOM_TAB_NAVIGATOR, DETAIL_SCREEN, HOME_SCREEN, LOGIN_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { BOTTOM_TAB_NAVIGATOR, DETAIL_SCREEN, HOME_SCREEN, LOGIN_SCREEN, SHOP_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
 import DetailScreen from '../screens/DetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -33,7 +33,7 @@ const RootStack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
-function TopTabNavigator(): JSX.Element {
+function TopTabNavigator() {
   return (
     <TopTab.Navigator>
       <TopTab.Screen name={HOME_SCREEN} component={HomeScreen} />

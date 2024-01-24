@@ -11,17 +11,17 @@ interface Props {
     | 'space-around'
     | 'space-evenly'
     | undefined;
-    style?: StyleProp<ViewStyle>;
     children: ReactNode;
     onPress?: () => void;
 }
 
 const RowComponent = (props: Props) => {
-    const { children, style, justify, onPress } = props;
+    const { children, justify, onPress } = props;
 
     const localStyle = [GlobalStyle.row, {
-        justifyContent: justify ? justify : 'center'
-    }, style]
+        justifyContent: justify ?? 'center',
+        alignItems: 'center'
+    }]
 
     return (
         <>
@@ -32,7 +32,7 @@ const RowComponent = (props: Props) => {
                 >
                     {children}
                 </TouchableOpacity> : <View
-                    style={localStyle as StyleProp<ViewStyle>}
+                    style={[localStyle as StyleProp<ViewStyle>]}
                 >
                     {children}
                 </View>

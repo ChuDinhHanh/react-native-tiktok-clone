@@ -3,4 +3,5 @@ export const Colors = {
   WHITE: '#fff',
   GREY: 'grey',
   BLACK: '#000000',
+  GREY_PALE: 'rgb(160 172 175)',
 };

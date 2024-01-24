@@ -4,12 +4,13 @@ import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import { store } from './src/redux/Store'
 import Router from './src/router/Router'
+import { StatusBar } from 'react-native'
 
 const App = () => {
   return (
     <NavigationContainer>
       <Provider store={store}>
-          <Router />
+        <Router />
       </Provider>
     </NavigationContainer>
   )
