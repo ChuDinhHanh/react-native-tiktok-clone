@@ -13,12 +13,14 @@ interface Props {
     textDecoration?: boolean;
     isActive?: boolean;
     color?: string;
+    marginLeft?: number;
 }
 const ButtonComponent = (props: Props) => {
-    const { previousImage, titleChildren, previousIcon, onPress, space, backgroundColor, textDecoration, isActive, color } = props
+    const { marginLeft, previousImage, titleChildren, previousIcon, onPress, space, backgroundColor, textDecoration, isActive, color } = props
     return (
         <TouchableOpacity
             onPress={onPress}
+            style={{ marginLeft }}
         >
             <View
                 style={[{

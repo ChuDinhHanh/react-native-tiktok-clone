@@ -1,20 +1,20 @@
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useCallback, useState } from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, StyleSheet, View } from 'react-native'
 import SwiperFlatList from 'react-native-swiper-flatlist'
 import HeaderHomeScreenComponent from '../components/HeaderHomeScreenComponent'
-import SingleVideo from '../components/ingredient/SingleVideo'
+import SingleVideoComponent from '../components/ingredient/SingleVideoComponent'
+import CommentModal from '../components/modal/CommentModal'
 import { Colors } from '../constants/Colors'
 import { LOGIN_SCREEN, SIGN_IN_SCREEN } from '../constants/Screens'
-import { SCREEN_WIDTH, WINDOW_HEIGHT } from '../constants/Variables'
+import { SCREEN_WIDTH } from '../constants/Variables'
 import { Videos } from '../data/Videos'
 import { RootStackParamList } from '../router/Router'
+import { getHeightOfWrapperVideo } from '../utils/HeightOfVideo'
 import LoginScreen from './LoginScreen'
 import SignInScreen from './SignInScreen'
-
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -32,10 +32,8 @@ const HomeScreen = () => {
     console.log('==================HomeScreen==================');
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const [currentIndex, setCurrentIndex] = useState(0);
-    const bottomTabHeight = useBottomTabBarHeight();
-    const tabBarHeight = StatusBar.currentHeight ?? 0;
-    const heightOfWrapperVideo = WINDOW_HEIGHT - bottomTabHeight - tabBarHeight;
-
+    const heightOfWrapperVideo = getHeightOfWrapperVideo();
+    
     const handleChooseOptionEvent = useCallback((idChoose: number) => {
         console.log(idChoose);
     }, [])
@@ -43,14 +41,10 @@ const HomeScreen = () => {
     return (
 
         <View
-            style={{
-                alignItems: 'center',
-                width: SCREEN_WIDTH,
-                height: heightOfWrapperVideo,
-                backgroundColor: Colors.BLACK,
-            }}
+            style={[styles.homeWrapper, { height: heightOfWrapperVideo }]}
         >
             <StatusBar backgroundColor={Colors.BLACK} />
+            {/*  */}
             <HeaderHomeScreenComponent
                 onChooseOptionEvent={handleChooseOptionEvent}
             />
@@ -61,7 +55,7 @@ const HomeScreen = () => {
                 }}
                 vertical
                 renderItem={({ item, index }) =>
-                    <SingleVideo
+                    <SingleVideoComponent
                         currentIndex={currentIndex}
                         item={item}
                         index={index} />}
@@ -74,8 +68,16 @@ const HomeScreen = () => {
                     setCurrentIndex(realIndex);
                 }}
             />
+            <CommentModal />
         </View>
     )
 }
 
+const styles = StyleSheet.create({
+    homeWrapper: {
+        alignItems: 'center',
+        width: SCREEN_WIDTH,
+        backgroundColor: Colors.BLACK,
+    }
+})
 export default HomeScreen

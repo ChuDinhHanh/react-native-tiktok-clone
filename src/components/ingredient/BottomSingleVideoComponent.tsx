@@ -1,13 +1,13 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import { Image, StyleSheet, View } from 'react-native'
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import { Colors } from '../../constants/Colors'
-import SessionComponent from './SessionComponent'
-import TextComponent from './TextComponent'
-import RowComponent from './RowComponent'
 import ButtonComponent from './ButtonComponent'
 import ContentSingleVideo from './ContentSingleVideo'
-import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
+import RowComponent from './RowComponent'
+import SessionComponent from './SessionComponent'
 import SpaceComponent from './SpaceComponent'
+import TextComponent from './TextComponent'
 
 interface Props {
     uid: number,
@@ -18,7 +18,6 @@ interface Props {
 }
 const BottomSingleVideoComponent = (props: Props) => {
     const { uid, title, isOfficial, name, tags } = props;
-    console.log('==================BottomSingleVideoComponent==================');
     return (
         <View
             style={styles.wrapper}
@@ -26,12 +25,11 @@ const BottomSingleVideoComponent = (props: Props) => {
             <SessionComponent>
                 {/* Name */}
                 <View
-                    style={{
-                        flexDirection: 'row',
-                    }}
+                    style={styles.rowWrapper}
                 >
-                    <View style={{ width: '85%' }}>
+                    <View style={styles.wrapperRight}>
                         <RowComponent
+                            alignItems='center'
                             justify='flex-start'
                             onPress={() => console.log(uid)}
                         >
@@ -61,15 +59,9 @@ const BottomSingleVideoComponent = (props: Props) => {
                             }
                         </RowComponent>
                     </View>
-                    <View style={{ width: '15%' }}>
+                    <View style={styles.wrapperLeft}>
                         <Image
-                            style={{
-                                width: 50,
-                                height: 50,
-                                position: 'absolute',
-                                right: 0,
-                                bottom: 5
-                            }}
+                            style={styles.image}
                             source={require('../../assets/images/disc.png')} />
                     </View>
                 </View>
@@ -83,6 +75,22 @@ const styles = StyleSheet.create({
     wrapper: {
         position: 'absolute',
         bottom: 0,
+    },
+    wrapperRight: {
+        width: '85%'
+    },
+    wrapperLeft: {
+        width: '15%'
+    },
+    rowWrapper: {
+        flexDirection: 'row',
+    },
+    image: {
+        width: 50,
+        height: 50,
+        position: 'absolute',
+        right: 0,
+        bottom: 5
     }
 })
 export default BottomSingleVideoComponent

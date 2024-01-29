@@ -11,16 +11,21 @@ interface Props {
     | 'space-around'
     | 'space-evenly'
     | undefined;
-    children: ReactNode;
+    children?: ReactNode;
     onPress?: () => void;
+    alignItems?: string;
+    marginVertical?: number;
+    marginLeft?: number;
 }
 
 const RowComponent = (props: Props) => {
-    const { children, justify, onPress } = props;
+    const { children, justify, onPress, alignItems, marginVertical, marginLeft } = props;
 
     const localStyle = [GlobalStyle.row, {
         justifyContent: justify ?? 'center',
-        alignItems: 'center'
+        alignItems,
+        marginVertical,
+        marginLeft
     }]
 
     return (

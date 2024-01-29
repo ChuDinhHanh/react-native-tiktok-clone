@@ -46,6 +46,7 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarStyle: { backgroundColor: Colors.BLACK },
         headerShown: false,
         tabBarActiveTintColor: Colors.WHITE

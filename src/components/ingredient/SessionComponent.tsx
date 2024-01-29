@@ -18,7 +18,7 @@ const SessionComponent = (props: Props) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        margin: 16
+        padding: 16
     }
 })
 export default SessionComponent

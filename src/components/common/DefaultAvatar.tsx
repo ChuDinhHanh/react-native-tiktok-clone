@@ -3,12 +3,13 @@ import { Image, Text, View } from 'react-native';
 import { Colors } from '../../constants/Colors';
 
 interface Props {
-    name: string,
-    image?: string
+    name: string;
+    image?: string;
+    size?: number;
 }
 
 const DefaultAvatar = (props: Props) => {
-    const { name, image } = props;
+    const { name, image, size } = props;
 
     const generateColor = () => {
         const randomColor = Math.floor(Math.random() * 16777215)
@@ -27,8 +28,8 @@ const DefaultAvatar = (props: Props) => {
                     <Image
                         source={{ uri: image }}
                         style={{
-                            width: 40,
-                            height: 40,
+                            width: size ?? 40,
+                            height: size ?? 40,
                             borderRadius: 100,
                             flex: 0
                         }
@@ -37,8 +38,8 @@ const DefaultAvatar = (props: Props) => {
                     :
                     <View
                         style={{
-                            width: 40,
-                            height: 40,
+                            width: size ?? 40,
+                            height: size ?? 40,
                             backgroundColor: generateColor(),
                             borderRadius: 100,
                             flex: 0,
