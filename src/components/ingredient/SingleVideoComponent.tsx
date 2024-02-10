@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Colors } from '../../constants/Colors'
 import { SCREEN_HEIGHT, SCREEN_WIDTH, WINDOW_WIDTH } from '../../constants/Variables'
@@ -16,9 +16,7 @@ interface Props {
 const SingleVideoComponent = (props: Props) => {
   console.log('================SingleVideo====================');
   const { index, item, currentIndex } = props
-
   const heightOfWrapperVideo = getHeightOfWrapperVideo();
-
   const totalQtyComments = useCallback((a: any) => {
     return 1;
   }, [])
@@ -40,6 +38,7 @@ const SingleVideoComponent = (props: Props) => {
         isOfficial={item.user.isOfficial}
         title={item.title}
         tags={item.tags}
+        isActive={currentIndex === index}
       />
       {/* Options */}
       <RightSingleVideoComponent

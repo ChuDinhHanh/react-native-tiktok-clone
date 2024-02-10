@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useMemo, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Colors } from '../../constants/Colors';
 import CommentsItemComponent from './CommentsItemComponent';
 import RowComponent from './RowComponent';
-import TextComponent from './TextComponent';
-import ButtonComponent from './ButtonComponent';
 import SpaceComponent from './SpaceComponent';
+import TextComponent from './TextComponent';
+import SkeletonCommentComponent from '../skeleton/SkeletonCommentComponent';
 
 const PrintfCommentComponent = React.memo((props: { comments: any }) => {
     const [showData, setShowData] = useState(false);
@@ -14,12 +14,14 @@ const PrintfCommentComponent = React.memo((props: { comments: any }) => {
     useEffect(() => {
         setTimeout(() => {
             setShowData(true);
-        }, 500)
+        }, 150)
     }, [])
 
     return (
-        showData && <PrintfFatherCommentComponent comments={memoizedComments} />
-    )
+        showData &&
+        <PrintfFatherCommentComponent comments={memoizedComments} />
+
+    );
 })
 
 // cha

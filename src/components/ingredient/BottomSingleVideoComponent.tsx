@@ -1,5 +1,5 @@
-import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import React, { memo } from 'react'
+import { StyleSheet, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import { Colors } from '../../constants/Colors'
 import ButtonComponent from './ButtonComponent'
@@ -14,10 +14,13 @@ interface Props {
     name: string,
     isOfficial: boolean,
     title: string,
-    tags: [{ id: number, name: string }]
+    tags: [{ id: number, name: string }],
+    isActive: boolean,
 }
+
 const BottomSingleVideoComponent = (props: Props) => {
-    const { uid, title, isOfficial, name, tags } = props;
+    console.log('===================BottomSingleVideoComponent=================');
+    const { uid, title, isOfficial, name, tags, isActive } = props;
     return (
         <View
             style={styles.wrapper}
@@ -46,6 +49,7 @@ const BottomSingleVideoComponent = (props: Props) => {
                         {/* Tag */}
                         <RowComponent
                             justify='flex-start'
+                            isWrap={true}
                         >
                             {
                                 tags?.map((item) => {
@@ -60,12 +64,9 @@ const BottomSingleVideoComponent = (props: Props) => {
                         </RowComponent>
                     </View>
                     <View style={styles.wrapperLeft}>
-                        <Image
-                            style={styles.image}
-                            source={require('../../assets/images/disc.png')} />
                     </View>
                 </View>
-
+                <SpaceComponent height={15} />
             </SessionComponent>
         </View>
     )
@@ -77,10 +78,10 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     wrapperRight: {
-        width: '85%'
+        width: '85%',
     },
     wrapperLeft: {
-        width: '15%'
+        width: '15%',
     },
     rowWrapper: {
         flexDirection: 'row',
@@ -91,6 +92,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
         bottom: 5
+    },
+    musicNode: {
+        position: 'absolute', width: 20, height: 20, tintColor: 'white', right: 48, bottom: 25
     }
 })
-export default BottomSingleVideoComponent
+export default memo(BottomSingleVideoComponent)

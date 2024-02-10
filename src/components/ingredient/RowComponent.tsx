@@ -1,9 +1,9 @@
-import { View, Text, ViewStyle, StyleProp, TouchableOpacity } from 'react-native'
+import { View, Text, ViewStyle, StyleProp, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { ReactNode } from 'react'
 import { GlobalStyle } from '../../styles/GlobalStyle';
 
 interface Props {
-    justify?:
+    justify:
     | 'center'
     | 'flex-start'
     | 'flex-end'
@@ -16,16 +16,17 @@ interface Props {
     alignItems?: string;
     marginVertical?: number;
     marginLeft?: number;
+    isWrap?: boolean;
 }
 
 const RowComponent = (props: Props) => {
-    const { children, justify, onPress, alignItems, marginVertical, marginLeft } = props;
+    const { children, justify, onPress, alignItems, marginVertical, marginLeft, isWrap } = props;
 
     const localStyle = [GlobalStyle.row, {
         justifyContent: justify ?? 'center',
         alignItems,
         marginVertical,
-        marginLeft
+        marginLeft,
     }]
 
     return (
@@ -37,7 +38,7 @@ const RowComponent = (props: Props) => {
                 >
                     {children}
                 </TouchableOpacity> : <View
-                    style={[localStyle as StyleProp<ViewStyle>]}
+                    style={[localStyle as StyleProp<ViewStyle>, isWrap && styles.wrap]}
                 >
                     {children}
                 </View>
@@ -46,4 +47,9 @@ const RowComponent = (props: Props) => {
     )
 }
 
+const styles = StyleSheet.create({
+    wrap: {
+        flexWrap: 'wrap'
+    }
+})
 export default RowComponent

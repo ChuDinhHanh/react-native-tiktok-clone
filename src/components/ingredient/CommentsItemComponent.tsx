@@ -10,6 +10,7 @@ import ButtonDislikeComponent from './ButtonDislikeComponent'
 import { Colors } from '../../constants/Colors'
 import { useAppDispatch } from '../../redux/Hooks'
 import { openReplyComments } from '../../redux/Slice'
+import ContentSingleVideo from './ContentSingleVideo'
 
 interface Props {
     item: any;
@@ -33,7 +34,9 @@ const CommentsItemComponent = (props: Props) => {
             </View>
             <View style={{ width: '87%' }}>
                 <TextComponent text={item.user.name} color={Colors.GREY} />
-                <TextComponent text={item.comments} color={Colors.BLACK} />
+                <ContentSingleVideo color={Colors.BLACK}
+                    content={item.comments}
+                />
                 <View style={{ flex: 1 }}>
                     <RowComponent
                         justify='flex-start'

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import ButtonComponent from './ButtonComponent';
 import TextComponent from './TextComponent';
+import { useAppSelector } from '../../redux/Hooks';
 
 interface Props {
     id: number;

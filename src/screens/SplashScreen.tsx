@@ -21,17 +21,19 @@ const SplashScreen = () => {
   }, [])
 
   return (
-    <Container>
+    <Container
+      isCenter={true}
+    >
       <Image
-        style={{
-          width: 100, height: 100,
-        }}
+        style={styles.image}
         source={require("../assets/images/TikTok_Logo.png")} />
     </Container>
   )
 }
 
 const styles = StyleSheet.create({
-
+  image: {
+    width: 100, height: 100,
+  }
 });
 export default SplashScreen

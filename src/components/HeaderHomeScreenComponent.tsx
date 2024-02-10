@@ -19,6 +19,7 @@ const HeaderHomeScreenComponent = (props: { onChooseOptionEvent: (idChoose: numb
         setActiveId(id);
         onChooseOptionEvent(id);
     }
+
     return (
         <View
             style={styles.wrapper}
@@ -26,7 +27,7 @@ const HeaderHomeScreenComponent = (props: { onChooseOptionEvent: (idChoose: numb
             <SessionComponent>
                 <RowComponent
                     justify='space-around'
-
+                    alignItems='center'
                 >
                     <ButtonComponent
                         onPress={() => {

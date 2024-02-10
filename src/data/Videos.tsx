@@ -8,7 +8,7 @@ export const Videos = [
             name: "Nguyen Van A",
             isOfficial: true
         },
-        video: require('../assets/videos/v4.mp4'),
+        video: require('../assets/videos/vn.mp4'),
         isLiked: false,
         likeQty: 150,
         isFavorite: false,
@@ -17,7 +17,7 @@ export const Videos = [
         isOfficial: false,
         tags: [
             { id: 1, name: "#BongDa" },
-            { id: 2, name: "#Messi" }
+            { id: 2, name: "#Messi" },
         ],
         comments: [
             {
@@ -167,7 +167,7 @@ export const Videos = [
             name: "Nguyen Van A",
             isOfficial: false
         },
-        video: require('../assets/videos/v1.mp4'),
+        video: require('../assets/videos/v5.mp4'),
         isLiked: true,
         likeQty: 150,
         isFavorite: false,
@@ -200,7 +200,7 @@ export const Videos = [
             name: "Nguyen Van A",
             isOfficial: false
         },
-        video: require('../assets/videos/v7.mp4'),
+        video: require('../assets/videos/v9.mp4'),
         isLiked: true,
         likeQty: 150,
         isFavorite: false,

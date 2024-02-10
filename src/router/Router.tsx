@@ -1,10 +1,10 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, Text } from 'react-native';
 import { Colors } from '../constants/Colors';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { BOTTOM_TAB_NAVIGATOR, DETAIL_SCREEN, HOME_SCREEN, LOGIN_SCREEN, SHOP_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
+import { BOTTOM_TAB_NAVIGATOR, DETAIL_SCREEN, HOME_SCREEN, LOGIN_SCREEN, SEARCH_SCREEN, SHOP_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATION_SERVICE, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
 import DetailScreen from '../screens/DetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -16,6 +16,7 @@ import ShopScreen from '../screens/ShopScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { INITIAL_SCREEN } from '../constants/SystemConstant';
+import SearchScreen from '../screens/SearchScreen';
 
 
 
@@ -27,6 +28,8 @@ export type RootStackParamList = {
   SPLASH_SCREEN: undefined
   STACK_NAVIGATOR_AUTHENTICATION: undefined
   BOTTOM_TAB_NAVIGATOR: undefined
+  SEARCH_SCREEN: undefined
+  STACK_NAVIGATION_SERVICE: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
@@ -172,10 +175,29 @@ function StackNavigatorMain() {
         component={StackNavigatorAuthentication}
         options={{ header: () => false }}
       />
+      <RootStack.Screen
+        name={STACK_NAVIGATION_SERVICE}
+        component={StackNavigatorService}
+        options={{ header: () => false }}
+      />
     </RootStack.Navigator>
   )
 }
 
+
+function StackNavigatorService() {
+  return (
+    <RootStack.Navigator
+      initialRouteName={SEARCH_SCREEN}
+    >
+      <RootStack.Screen
+        name={SEARCH_SCREEN}
+        component={SearchScreen}
+        options={{ header: () => false }}
+      />
+    </RootStack.Navigator>
+  )
+}
 
 const Router = () => {
   return <StackNavigatorMain />

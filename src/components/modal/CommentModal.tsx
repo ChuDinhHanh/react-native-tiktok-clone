@@ -1,15 +1,13 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, Modal, PanResponder, Platform, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import React, { memo, useRef } from 'react';
+import { Animated, Modal, PanResponder, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import { Colors } from '../../constants/Colors';
 import { WINDOW_HEIGHT } from '../../constants/Variables';
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
 import { closeModalComments } from '../../redux/Slice';
-import ContentSingleVideo from '../ingredient/ContentSingleVideo';
 import InputCommentModalComponent from '../ingredient/InputCommentModalComponent';
-import SessionComponent from '../ingredient/SessionComponent';
 import PrintfCommentComponent from '../ingredient/PrintfCommentComponent';
-import { useIsFocused } from '@react-navigation/native';
+import SessionComponent from '../ingredient/SessionComponent';
 
 //  Constant
 const BOTTOM_SHEET_MAX_HEIGHT = WINDOW_HEIGHT * 0.9;
@@ -22,7 +20,7 @@ const DRAG_THRESHOLD = 50;
 const CommentModal = () => {
     console.log('==================CommentModal==================');
     const dispatch: any = useAppDispatch();
-    const { openModalComment } = useAppSelector((state) => state.TikTok2024Reducer)
+    const openModalComment = useAppSelector((state) => state.TikTok2024Reducer.openModalComment)
     const animatedValue = useRef(new Animated.Value(0)).current;
     const lastGestureDy = useRef(0);
 

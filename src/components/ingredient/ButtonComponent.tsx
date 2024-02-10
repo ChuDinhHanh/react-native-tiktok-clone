@@ -2,21 +2,25 @@ import React, { ReactNode } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors } from '../../constants/Colors';
 import SpaceComponent from './SpaceComponent';
+import RowComponent from './RowComponent';
 
 interface Props {
     previousIcon?: ReactNode;
     previousImage?: ReactNode;
+    beHindIcon?: ReactNode;
     titleChildren?: ReactNode;
     onPress: () => void;
-    space?: number;
+    SpaceComponentPrevious?: number;
+    SpaceComponentBeHind?: number;
     backgroundColor?: string;
     textDecoration?: boolean;
     isActive?: boolean;
     color?: string;
     marginLeft?: number;
 }
+
 const ButtonComponent = (props: Props) => {
-    const { marginLeft, previousImage, titleChildren, previousIcon, onPress, space, backgroundColor, textDecoration, isActive, color } = props
+    const { beHindIcon, marginLeft, previousImage, titleChildren, previousIcon, onPress, SpaceComponentPrevious, SpaceComponentBeHind, backgroundColor, textDecoration, isActive, color } = props
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -24,13 +28,13 @@ const ButtonComponent = (props: Props) => {
         >
             <View
                 style={[{
-                    backgroundColor: backgroundColor ?? 'transparent'
+                    backgroundColor: backgroundColor ?? 'transparent',
                 }, styles.row]}
             >
-                <View>
+                <RowComponent justify={undefined} alignItems='center'>
                     {previousIcon}
                     {previousImage}
-                    <SpaceComponent width={space ?? 0}
+                    <SpaceComponent width={SpaceComponentPrevious ?? 0}
                     />
                     {titleChildren}
                     {
@@ -38,7 +42,9 @@ const ButtonComponent = (props: Props) => {
                             style={[styles.textDecorationBottom, { backgroundColor: color ?? Colors.WHITE }]}
                         />
                     }
-                </View>
+                    <SpaceComponent width={SpaceComponentBeHind ?? 0} />
+                    {beHindIcon}
+                </RowComponent>
             </View>
         </TouchableOpacity >
     )

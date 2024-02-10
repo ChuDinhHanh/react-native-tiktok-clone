@@ -10,27 +10,20 @@ export interface TikTok2024State {
     uid: number | null;
     name: string | null;
   };
+  stoppingVideo: number | null;
 }
 
 const initialState: TikTok2024State = {
   value: 0,
   openModalComment: {isOpen: false, data: null},
   openReplyComment: {uniqueCode: '', uid: null, name: null},
+  stoppingVideo: null,
 };
 
 export const slice = createSlice({
   name: SLICE_NAME,
   initialState,
   reducers: {
-    increment: state => {
-      state.value += 1;
-    },
-    decrement: state => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
-    },
     openModalComments: (state, action: PayloadAction<any>) => {
       state.openModalComment = {isOpen: true, data: action.payload};
     },
@@ -56,16 +49,21 @@ export const slice = createSlice({
         name: null,
       };
     },
+    startStopVideo: (state, action: PayloadAction<number>) => {
+      state.stoppingVideo = action.payload;
+    },
+    stopPauseVideo: state => {
+      state.stoppingVideo = null;
+    },
   },
 });
 
 export const {
-  increment,
-  decrement,
-  incrementByAmount,
   closeModalComments,
   openModalComments,
   closeReplyComments,
   openReplyComments,
+  startStopVideo,
+  stopPauseVideo
 } = slice.actions;
 export default slice.reducer;
