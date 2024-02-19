@@ -1,6 +1,7 @@
 import { View, Text, ViewStyle, StyleProp, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { ReactNode } from 'react'
 import { GlobalStyle } from '../../styles/GlobalStyle';
+import { Colors } from '../../constants/Colors';
 
 interface Props {
     justify:

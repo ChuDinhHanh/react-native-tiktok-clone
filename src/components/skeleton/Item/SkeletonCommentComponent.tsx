@@ -4,7 +4,6 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 const SkeletonCommentComponent = () => {
-    console.log('==================SkeletonCommentComponent==================');
     return <SkeletonPlaceholder borderRadius={4}>
         <SkeletonPlaceholder.Item flexDirection="row" alignItems="center">
             <SkeletonPlaceholder.Item width={45} height={45} borderRadius={45} />

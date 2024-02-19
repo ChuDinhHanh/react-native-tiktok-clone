@@ -5,15 +5,20 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from 'react-native-swiper-flatlist/src/themes'
 import { Colors } from '../../constants/Colors'
 
-
-const ContentSingleVideo = (props: { content: string, color?: string }) => {
+interface Props {
+    content: string,
+    color?: string,
+    numberOfLines?: number,
+    padding?: number;
+}
+const ContentSingleVideo = (props: Props) => {
     return (
         <SafeAreaView style={styles.safe}>
-            <View style={styles.root}>
+            <View style={[styles.root, { paddingVertical: props.padding ?? 5 }]}>
                 <ReadMore
                     seeMoreStyle={[styles.seeMoreAndLessStyle, { color: props.color ?? Colors.WHITE }]}
                     seeLessStyle={[styles.seeMoreAndLessStyle, { color: props.color ?? Colors.WHITE }]}
-                    numberOfLines={1}
+                    numberOfLines={props.numberOfLines ?? 1}
                     style={[styles.textStyle, { color: props.color ?? Colors.WHITE }]}
                 >
                     {
@@ -31,7 +36,6 @@ const styles = StyleSheet.create({
     },
     root: {
         flex: 1,
-        paddingVertical: 5
     },
     textStyle: {
         fontSize: 14,

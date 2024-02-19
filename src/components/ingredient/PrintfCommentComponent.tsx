@@ -5,7 +5,7 @@ import CommentsItemComponent from './CommentsItemComponent';
 import RowComponent from './RowComponent';
 import SpaceComponent from './SpaceComponent';
 import TextComponent from './TextComponent';
-import SkeletonCommentComponent from '../skeleton/SkeletonCommentComponent';
+import SkeletonCommentComponent from '../skeleton/Item/SkeletonCommentComponent';
 
 const PrintfCommentComponent = React.memo((props: { comments: any }) => {
     const [showData, setShowData] = useState(false);

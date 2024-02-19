@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, Pressable, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import IconOcticons from 'react-native-vector-icons/Octicons';
 import { Colors } from '../../constants/Colors';
@@ -8,7 +8,6 @@ import ButtonComponent from './ButtonComponent';
 import RowComponent from './RowComponent';
 import SearchItemHistoryComponent from './SearchItemHistoryComponent';
 import TextComponent from './TextComponent';
-import { Text } from 'react-native';
 
 
 const PrintHistorySearch = () => {

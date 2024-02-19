@@ -2,13 +2,16 @@ import { View, Text, StyleSheet } from 'react-native'
 import React, { ReactNode } from 'react'
 
 interface Props {
-    children: ReactNode
+    children: ReactNode;
+    padding?: number,
+    paddingNotTop?: Boolean;
+    backgroundColor?: string;
 }
 const SessionComponent = (props: Props) => {
-    const { children } = props;
+    const { children, padding, paddingNotTop, backgroundColor } = props;
     return (
         <View
-            style={styles.wrapper}>
+            style={{ padding: padding ?? 16, paddingTop: paddingNotTop && 0, backgroundColor }}>
             {
                 children
             }
@@ -17,8 +20,5 @@ const SessionComponent = (props: Props) => {
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
-        padding: 16
-    }
 })
 export default SessionComponent

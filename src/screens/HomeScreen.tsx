@@ -1,4 +1,3 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useCallback, useState } from 'react'
@@ -8,24 +7,12 @@ import HeaderHomeScreenComponent from '../components/HeaderHomeScreenComponent'
 import SingleVideoComponent from '../components/ingredient/SingleVideoComponent'
 import CommentModal from '../components/modal/CommentModal'
 import { Colors } from '../constants/Colors'
-import { LOGIN_SCREEN, SEARCH_SCREEN, SIGN_IN_SCREEN, STACK_NAVIGATION_SERVICE } from '../constants/Screens'
+import { SEARCH_SCREEN, STACK_NAVIGATION_SERVICE } from '../constants/Screens'
 import { SCREEN_WIDTH, followingScreenId, forYouScreenId, friendScreenId, liveScreenId, searchScreenId } from '../constants/Variables'
 import { Videos } from '../data/Videos'
 import { RootStackParamList } from '../router/Router'
 import { getHeightOfWrapperVideo } from '../utils/HeightOfVideo'
-import LoginScreen from './LoginScreen'
-import SignInScreen from './SignInScreen'
 
-const TopTab = createMaterialTopTabNavigator();
-
-function TopTabNavigator(): JSX.Element {
-    return (
-        <TopTab.Navigator>
-            <TopTab.Screen name={LOGIN_SCREEN} component={LoginScreen} />
-            <TopTab.Screen name={SIGN_IN_SCREEN} component={SignInScreen} />
-        </TopTab.Navigator>
-    )
-}
 
 
 const HomeScreen = () => {

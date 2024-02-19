@@ -28,6 +28,7 @@ const SearchItemHistoryComponent = (props: Props) => {
               {previousIcon}
               <SpaceComponent width={10} />
               <TextComponent
+                fontWeight='bold'
                 color={Colors.BLACK}
                 text={content} />
             </RowComponent>

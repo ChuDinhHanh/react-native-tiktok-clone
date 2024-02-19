@@ -7,4 +7,6 @@ export const Colors = {
   PINK: '#ff3b5c',
   GREY_2: 'rgb(241 241 242)',
   GREY_3: 'rgb(176 177 181)',
+  GREY_4: 'rgb(218 213 213)',
+  YELLOW: 'rgb(251 203 21)',
 };

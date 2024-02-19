@@ -17,18 +17,21 @@ interface Props {
     isActive?: boolean;
     color?: string;
     marginLeft?: number;
+    padding?: number;
+    borderRadius?: number;
 }
 
 const ButtonComponent = (props: Props) => {
-    const { beHindIcon, marginLeft, previousImage, titleChildren, previousIcon, onPress, SpaceComponentPrevious, SpaceComponentBeHind, backgroundColor, textDecoration, isActive, color } = props
+    const { beHindIcon, marginLeft, previousImage, titleChildren, previousIcon, onPress, SpaceComponentPrevious, SpaceComponentBeHind, backgroundColor, textDecoration, isActive, color, borderRadius
+        , padding } = props
     return (
         <TouchableOpacity
             onPress={onPress}
-            style={{ marginLeft }}
+            style={{ marginLeft, borderRadius }}
         >
             <View
                 style={[{
-                    backgroundColor: backgroundColor ?? 'transparent',
+                    backgroundColor: backgroundColor ?? 'transparent', padding, borderRadius
                 }, styles.row]}
             >
                 <RowComponent justify={undefined} alignItems='center'>

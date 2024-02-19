@@ -7,6 +7,7 @@ import ButtonAvatarComponent from './ButtonAvatarComponent'
 import InputComponent from './InputComponent'
 import IconIonicons from 'react-native-vector-icons/Ionicons'
 import { useAppSelector } from '../../redux/Hooks'
+import { INPUT_OF_COMMENT } from '../../constants/Variables'
 
 interface Props {
     onSpringAnimation: (action: "up" | "down") => void
@@ -37,7 +38,7 @@ const InputCommentModalComponent = (props: Props) => {
         >
             <KeyboardAvoidingView>
                 <SessionComponent>
-                    <RowComponent>
+                    <RowComponent justify={undefined}>
                         <View style={{ width: '13%' }}>
                             <ButtonAvatarComponent
                                 uid={0}
@@ -50,6 +51,7 @@ const InputCommentModalComponent = (props: Props) => {
                         </View>
                         <View style={styles.inputWrapper}>
                             <InputComponent
+                                type={INPUT_OF_COMMENT}
                                 iconRight={<IconIonicons
                                     name='arrow-up-circle'
                                     size={35}
