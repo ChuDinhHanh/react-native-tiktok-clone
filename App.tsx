@@ -7,9 +7,9 @@ import Router from './src/router/Router'
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Provider store={store}>
-          <Router />
+        <Router />
       </Provider>
     </NavigationContainer>
   )

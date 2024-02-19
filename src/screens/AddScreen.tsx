@@ -1,10 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import CategoriesComponent from '../components/ingredient/CategoriesComponent'
+import WomenClothesComponent from '../components/toptab/WomenClothesComponent'
+import SkeletonShopScreen from '../components/skeleton/SkeletonShopScreen'
 
 const AddScreen = () => {
   return (
     <View>
-      <Text>AddScreen</Text>
+      <SkeletonShopScreen/>
+      <Text>AddScreen lorem</Text>
     </View>
   )
 }

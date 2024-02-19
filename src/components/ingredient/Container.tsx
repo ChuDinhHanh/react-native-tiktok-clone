@@ -1,15 +1,18 @@
-import { View, Text, ViewStyle, StyleProp, StyleSheet } from 'react-native'
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Colors } from '../../constants/Colors';
 
 interface Props {
-    children: ReactNode
+    children: ReactNode;
+    color?: string;
+    isCenter: boolean;
 }
+
 const Container = (props: Props) => {
-    const { children } = props;
+    const { children, color, isCenter } = props;
     return (
         <View
-            style={styles.iconContainer}
+            style={[isCenter ? styles.iconContainerCenter : styles.iconContainer, { backgroundColor: color ?? Colors.BLACK }]}
         >
             {
                 children
@@ -20,12 +23,15 @@ const Container = (props: Props) => {
 
 
 const styles = StyleSheet.create({
-    iconContainer: {
-        backgroundColor: Colors.BLACK,
+    iconContainerCenter: {
         width: '100%',
         height: '100%',
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    iconContainer: {
+        width: '100%',
+        height: '100%',
     }
 })
 

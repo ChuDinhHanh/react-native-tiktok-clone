@@ -4,20 +4,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Image } from 'react-native';
 import { Colors } from '../constants/Colors';
-import { BOTTOM_TAB_NAVIGATOR, DETAIL_SCREEN, HOME_SCREEN, LOGIN_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
+import { BOTTOM_TAB_NAVIGATOR, CART_SCREEN, DETAIL_SCREEN, FLASH_SALE_SCREEN, HOME_SCREEN, LOGIN_SCREEN, NEW_OFFER_SCREEN, SEARCH_SCREEN, SIGN_IN_SCREEN, SPLASH_SCREEN, STACK_NAVIGATION_SERVICE, STACK_NAVIGATOR_AUTHENTICATION } from '../constants/Screens';
+import { INITIAL_SCREEN } from '../constants/SystemConstant';
+import AddScreen from '../screens/AddScreen';
+import CartScreen from '../screens/CartScreen';
 import DetailScreen from '../screens/DetailScreen';
+import FlashSaleScreen from '../screens/FlashSaleScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
+import NewOfferScreen from '../screens/NewOfferScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import SearchScreen from '../screens/SearchScreen';
+import ShopScreen from '../screens/ShopScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SplashScreen from '../screens/SplashScreen';
 import { GlobalStyle } from '../styles/GlobalStyle';
-import AddScreen from '../screens/AddScreen';
-import ShopScreen from '../screens/ShopScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import { INITIAL_SCREEN } from '../constants/SystemConstant';
-
-
+import HeaderSearchScreenComponent from '../components/HeaderSearchScreenComponent';
 
 export type RootStackParamList = {
   HOME_SCREEN: undefined
@@ -27,13 +30,18 @@ export type RootStackParamList = {
   SPLASH_SCREEN: undefined
   STACK_NAVIGATOR_AUTHENTICATION: undefined
   BOTTOM_TAB_NAVIGATOR: undefined
+  SEARCH_SCREEN: undefined
+  STACK_NAVIGATION_SERVICE: undefined
+  NEW_OFFER_SCREEN: undefined
+  FLASH_SALE_SCREEN: undefined
+  CART_SCREEN: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
 const BottomTab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
-function TopTabNavigator(): JSX.Element {
+function TopTabNavigator() {
   return (
     <TopTab.Navigator>
       <TopTab.Screen name={HOME_SCREEN} component={HomeScreen} />
@@ -46,6 +54,7 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarStyle: { backgroundColor: Colors.BLACK },
         headerShown: false,
         tabBarActiveTintColor: Colors.WHITE
@@ -171,10 +180,49 @@ function StackNavigatorMain() {
         component={StackNavigatorAuthentication}
         options={{ header: () => false }}
       />
+      <RootStack.Screen
+        name={STACK_NAVIGATION_SERVICE}
+        component={StackNavigatorService}
+        options={{ header: () => false }}
+      />
     </RootStack.Navigator>
   )
 }
 
+
+function StackNavigatorService() {
+  return (
+    <RootStack.Navigator
+      initialRouteName={SEARCH_SCREEN}
+    >
+      <RootStack.Screen
+        name={SEARCH_SCREEN}
+        component={SearchScreen}
+        options={{ header: () => <HeaderSearchScreenComponent/> }}
+      />
+      <RootStack.Screen
+        name={DETAIL_SCREEN}
+        component={DetailScreen}
+        options={{ header: () => <HeaderSearchScreenComponent/> }}
+      />
+      <RootStack.Screen
+        name={CART_SCREEN}
+        component={CartScreen}
+        options={{ header: () => false }}
+      />
+      <RootStack.Screen
+        name={NEW_OFFER_SCREEN}
+        component={NewOfferScreen}
+        options={{ header: () => false }}
+      />
+      <RootStack.Screen
+        name={FLASH_SALE_SCREEN}
+        component={FlashSaleScreen}
+        options={{ header: () => false }}
+      />
+    </RootStack.Navigator>
+  )
+}
 
 const Router = () => {
   return <StackNavigatorMain />
