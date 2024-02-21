@@ -6,7 +6,7 @@ import {PATH_EXAM} from '../constants/Path';
 export const services = createApi({
   reducerPath: SERVICE_APP_NAME,
   baseQuery: fetchBaseQuery({baseUrl: PATH_EXAM}),
-    // tagTypes: ['Post', 'User'],
+  // tagTypes: ['Post', 'User'],
   keepUnusedDataFor: 30, // luu o cache 30s
   //   refetchOnMountOrArgChange: true, // khong luu du lieu o cache auto refresh
   //   refetchOnFocus: true,
@@ -28,7 +28,7 @@ export const services = createApi({
         method: 'POST',
         body,
       }),
-    //   invalidatesTags: ['Post'],
+      //   invalidatesTags: ['Post'],
     }),
   }),
 });

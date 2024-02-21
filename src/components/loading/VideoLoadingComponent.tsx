@@ -1,13 +1,17 @@
-import LottieView from 'lottie-react-native'
-import React from 'react'
-import { View } from 'react-native'
+import LottieView from 'lottie-react-native';
+import React from 'react';
+import {View} from 'react-native';
 
 const VideoLoadingComponent = () => {
-    return (
-        <View>
-            <LottieView source={require('../../assets/gifs/loadingTiktok.lottie')} autoPlay loop />
-        </View>
-    )
-}
+  return (
+    <View>
+      <LottieView
+        source={require('../../assets/gifs/loadingTiktok.lottie')}
+        autoPlay
+        loop
+      />
+    </View>
+  );
+};
 
-export default VideoLoadingComponent
+export default VideoLoadingComponent;
