@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, Animated } from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text, Animated} from 'react-native';
 
 const HorizontalLineWithButtons = () => {
-  const [indicatorPosition, setIndicatorPosition] = useState(new Animated.Value(0));
+  const [indicatorPosition, setIndicatorPosition] = useState(
+    new Animated.Value(0),
+  );
 
   const handleButtonPress = (position: number) => {
     Animated.spring(indicatorPosition, {
@@ -14,15 +16,15 @@ const HorizontalLineWithButtons = () => {
   const animated = indicatorPosition.interpolate({
     inputRange: [0, 1, 2],
     outputRange: ['0%', '33%', '66%'],
-  })
+  });
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <TouchableOpacity
         style={{
           width: '33%',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
         onPress={() => handleButtonPress(0)}>
         <Text>a</Text>
@@ -31,7 +33,7 @@ const HorizontalLineWithButtons = () => {
         style={{
           width: '33%',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
         onPress={() => handleButtonPress(1)}>
         <Text>b</Text>
@@ -40,7 +42,7 @@ const HorizontalLineWithButtons = () => {
         style={{
           width: '33%',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
         onPress={() => handleButtonPress(2)}>
         <Text>c</Text>
@@ -52,7 +54,7 @@ const HorizontalLineWithButtons = () => {
           backgroundColor: 'white',
           position: 'absolute',
           bottom: 0,
-          left: animated
+          left: animated,
         }}
       />
     </View>

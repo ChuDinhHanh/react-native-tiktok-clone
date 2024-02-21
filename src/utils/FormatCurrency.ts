@@ -1,3 +1,3 @@
-export const formatVietNamCurrency = (money: string | number) => {
+export const getFormatVietNamCurrency = (money: string | number) => {
   return money.toLocaleString();
 };

@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { View } from 'react-native';
+import {useState} from 'react';
+import {View} from 'react-native';
 import DocumentPicker, {
   DocumentPickerResponse,
 } from 'react-native-document-picker';
 
-
 const DocumentPickers = () => {
-
   const [attachsments, setAttachsments] = useState<DocumentPickerResponse[]>(
     [],
   );
@@ -31,10 +29,7 @@ const DocumentPickers = () => {
     return attachsments;
   };
 
-  return (
-    <View>
-    </View>
-  )
-}
+  return <View></View>;
+};
 
-export default DocumentPickers
+export default DocumentPickers;

@@ -1,33 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import BannerComponent from '../components/BannerComponent'
-import CategoriesComponent from '../components/ingredient/CategoriesComponent'
-import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent'
-import NewOfferComponent from '../components/ingredient/NewOfferComponent'
-import RowComponent from '../components/ingredient/RowComponent'
-import SessionComponent from '../components/ingredient/SessionComponent'
-import SpaceComponent from '../components/ingredient/SpaceComponent'
-import VoucherComponent from '../components/ingredient/VoucherComponent'
-import { Colors } from '../constants/Colors'
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../constants/Variables'
-import { NewOfferData, NewOfferDataSale } from '../data/NewOfferData'
-import ButtonBackToTop from '../components/ingredient/ButtonBackToTop'
-import SkeletonShopScreen from '../components/skeleton/SkeletonShopScreen'
-import { BannerTopData } from '../data/BannerTopData'
+import React, {useRef, useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import NewOfferComponent from '../components/ingredient/NewOfferComponent';
+import RowComponent from '../components/ingredient/RowComponent';
+import SessionComponent from '../components/ingredient/SessionComponent';
+import SpaceComponent from '../components/ingredient/SpaceComponent';
+import VoucherComponent from '../components/ingredient/VoucherComponent';
+import {Colors} from '../constants/Colors';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../constants/Variables';
+import {BannerTopData} from '../data/BannerTopData';
+import {NewOfferData, NewOfferDataSale} from '../data/NewOfferData';
+import {handleScrollEvent} from '../utils/BackToTopListen';
+import BannerComponent from '../components/BannerComponent';
+import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent';
+import CategoriesComponent from '../components/ingredient/CategoriesComponent';
+import ButtonBackToTop from '../components/ingredient/ButtonBackToTop';
 
 const ShopScreen = () => {
   console.log('=================ShopScreen===================');
   const ScrollViewRef = useRef<ScrollView>(null);
   const [showBackToTopButton, setShowBackToTopButton] = useState(false);
-
-  const handleScrollEvent = (event: any) => {
-    if (event.nativeEvent) {
-      const currentHeight = event.nativeEvent.contentOffset.y;
-      Math.round(currentHeight) > Math.round(SCREEN_HEIGHT * (2 / 3)) ? (!showBackToTopButton && setShowBackToTopButton(true))
-        :
-        (showBackToTopButton && setShowBackToTopButton(false))
-    }
-  }
 
   return (
     <View>
@@ -36,38 +27,57 @@ const ShopScreen = () => {
         <HeaderShopScreenComponent />
         <SpaceComponent height={5} />
         <ScrollView
-          onScroll={handleScrollEvent}
+          onScroll={event =>
+            handleScrollEvent(
+              event,
+              showBackToTopButton,
+              setShowBackToTopButton,
+            )
+          }
           ref={ScrollViewRef}
-          showsVerticalScrollIndicator={false}
-        >
+          showsVerticalScrollIndicator={false}>
           {/* Banner */}
-          <BannerComponent autoScroll={true} showNode={true} widthOfBanner={SCREEN_WIDTH - 20} height={110} data={BannerTopData} />
+          <BannerComponent
+            autoScroll={true}
+            showNode={true}
+            widthOfBanner={SCREEN_WIDTH - 20}
+            height={110}
+            data={BannerTopData}
+          />
           {/* Body */}
           {/* New voucher */}
-          <VoucherComponent />
+          <VoucherComponent isShadow={true} isNeedButtonTakeTicket={false} />
           {/* New offer */}
-          <NewOfferComponent isBigBanner={true} title='Ưu Đãi Bạn Mới' productList={NewOfferData} />
+          <NewOfferComponent
+            isBigBanner={true}
+            title="Ưu Đãi Bạn Mới"
+            productList={NewOfferData}
+          />
           {/* Host sale */}
           <SpaceComponent height={10} />
-          <RowComponent justify={'space-between'} alignItems='center'>
-            <NewOfferComponent isBigBanner={false} title='Hàng Hiệu Giá Hời' productList={NewOfferDataSale} />
+          <RowComponent justify={'space-between'} alignItems="center">
+            <NewOfferComponent
+              isBigBanner={false}
+              title="Hàng Hiệu Giá Hời"
+              productList={NewOfferDataSale}
+            />
             <SpaceComponent width={10} />
-            <NewOfferComponent isBigBanner={false} title='Flash Sale' productList={NewOfferDataSale} />
+            <NewOfferComponent
+              isBigBanner={false}
+              title="Flash Sale"
+              productList={NewOfferDataSale}
+            />
           </RowComponent>
           <SpaceComponent height={10} />
-          <View
-            style={styles.wrapperCategories}
-          >
+          <View style={styles.wrapperCategories}>
             <CategoriesComponent />
           </View>
         </ScrollView>
       </SessionComponent>
-      {
-        showBackToTopButton && <ButtonBackToTop scrollViewRef={ScrollViewRef} />
-      }
+      {showBackToTopButton && <ButtonBackToTop scrollViewRef={ScrollViewRef} />}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   wrapperBanner: {
@@ -76,7 +86,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -92,10 +102,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 5,
     overflow: 'hidden',
-    marginRight: 10
+    marginRight: 10,
   },
   dot: {
-    position: 'absolute', width: 10, height: 10, borderRadius: 10, backgroundColor: Colors.WHITE, top: 30
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    backgroundColor: Colors.WHITE,
+    top: 30,
   },
   dotLeft: {
     left: -5,
@@ -107,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     padding: 10,
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -119,8 +134,8 @@ const styles = StyleSheet.create({
   wrapperCategories: {
     flex: 1,
     width: '100%',
-    height: SCREEN_HEIGHT
-  }
-})
+    height: SCREEN_HEIGHT,
+  },
+});
 
-export default ShopScreen
+export default ShopScreen;

@@ -39,33 +39,29 @@
 
 // export default BottomSheetComponent;
 
-
-import React, { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, Button } from 'react-native';
+import React, {ReactNode, useCallback, useMemo, useRef, useState} from 'react';
+import {View, Text, StyleSheet, Dimensions, Button} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-const BottomSheetComponent = (props: { children: ReactNode }) => {
+const BottomSheetComponent = (props: {children: ReactNode}) => {
   const [isVisible, setIsVisible] = useState(false);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['1%', '70%', '90%'], []);
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
-  const { width, height } = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, zIndex: 999 }}>
-      {
-        props.children
-      }
+    <GestureHandlerRootView style={{flex: 1, zIndex: 999}}>
+      {props.children}
       <BottomSheet
         ref={bottomSheetRef}
         index={isVisible ? 1 : 0}
         snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        <View style={[styles.contentContainer, { width, height }]}>
+        onChange={handleSheetChanges}>
+        <View style={[styles.contentContainer, {width, height}]}>
           <Text>Awesome 🎉</Text>
         </View>
       </BottomSheet>

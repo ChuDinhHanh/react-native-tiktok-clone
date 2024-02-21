@@ -64,6 +64,6 @@ export const {
   closeReplyComments,
   openReplyComments,
   startStopVideo,
-  stopPauseVideo
+  stopPauseVideo,
 } = slice.actions;
 export default slice.reducer;

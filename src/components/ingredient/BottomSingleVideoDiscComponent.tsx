@@ -1,6 +1,6 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
-import { Animated, Easing, StyleSheet, View } from 'react-native';
-import { getMusicNodeAnimation } from '../../utils/MusicNodeAnimation';
+import React, {memo, useCallback, useEffect, useRef} from 'react';
+import {Animated, Easing, StyleSheet, View} from 'react-native';
+import {getMusicNodeAnimation} from '../../utils/MusicNodeAnimation';
 
 interface Props {
   isActive: boolean;
@@ -8,27 +8,37 @@ interface Props {
 }
 
 const BottomSingleVideoDiscComponent = (props: Props) => {
-  console.log('===================BottomSingleVideoDiscComponent=================');
-  const { isActive, isPause } = props;
-  // Animation 
+  console.log(
+    '===================BottomSingleVideoDiscComponent=================',
+  );
+  const {isActive, isPause} = props;
+  // Animation
   const discAnimatedValue = useRef(new Animated.Value(0)).current;
   const musicNodeAnimationValue1 = useRef(new Animated.Value(0)).current;
   const musicNodeAnimationValue2 = useRef(new Animated.Value(0)).current;
 
   // Disc
   const discAnimation = {
-    transform: [{
-      rotate: discAnimatedValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: ['0deg', '360deg'],
-      })
-    }]
-  }
+    transform: [
+      {
+        rotate: discAnimatedValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', '360deg'],
+        }),
+      },
+    ],
+  };
 
   // MusicNode 1
-  const musicNodeAnimation1 = getMusicNodeAnimation(musicNodeAnimationValue1, false);
+  const musicNodeAnimation1 = getMusicNodeAnimation(
+    musicNodeAnimationValue1,
+    false,
+  );
   // MusicNode 2
-  const musicNodeAnimation2 = getMusicNodeAnimation(musicNodeAnimationValue2, true);
+  const musicNodeAnimation2 = getMusicNodeAnimation(
+    musicNodeAnimationValue2,
+    true,
+  );
 
   const discAnimationLoopRef: any = useRef();
   const musicAnimationLoopRef: any = useRef();
@@ -39,26 +49,29 @@ const BottomSingleVideoDiscComponent = (props: Props) => {
         toValue: 1,
         duration: 2000,
         easing: Easing.linear,
-        useNativeDriver: false
-      }))
-    discAnimationLoopRef.current.start();
-
-    musicAnimationLoopRef.current = Animated.loop(Animated.sequence([
-      Animated.timing(musicNodeAnimationValue2, {
-        toValue: 1,
-        duration: 2000,
-        easing: Easing.linear,
-        useNativeDriver: false
-      }),
-      Animated.timing(musicNodeAnimationValue1, {
-        toValue: 1,
-        duration: 2000,
-        easing: Easing.linear,
         useNativeDriver: false,
       }),
-    ]))
+    );
+    discAnimationLoopRef.current.start();
+
+    musicAnimationLoopRef.current = Animated.loop(
+      Animated.sequence([
+        Animated.timing(musicNodeAnimationValue2, {
+          toValue: 1,
+          duration: 2000,
+          easing: Easing.linear,
+          useNativeDriver: false,
+        }),
+        Animated.timing(musicNodeAnimationValue1, {
+          toValue: 1,
+          duration: 2000,
+          easing: Easing.linear,
+          useNativeDriver: false,
+        }),
+      ]),
+    );
     musicAnimationLoopRef.current.start();
-  }, [])
+  }, []);
 
   const stopAnimation = (type: 'p' | 's') => {
     if (type === 'p') {
@@ -71,7 +84,7 @@ const BottomSingleVideoDiscComponent = (props: Props) => {
       musicNodeAnimationValue1.setValue(0);
       musicNodeAnimationValue2.setValue(0);
     }
-  }
+  };
 
   useEffect(() => {
     if (isActive && !isPause) {
@@ -79,26 +92,29 @@ const BottomSingleVideoDiscComponent = (props: Props) => {
     } else {
       isPause ? stopAnimation('p') : stopAnimation('s');
     }
-  }, [isActive, isPause])
+  }, [isActive, isPause]);
 
   return (
     <React.Fragment>
       {/* Node music x2 */}
       <Animated.Image
         style={[styles.musicNode, musicNodeAnimation1]}
-        source={require('../../assets/images/floating-music-note.png')} />
+        source={require('../../assets/images/floating-music-note.png')}
+      />
       <Animated.Image
         style={[styles.musicNode, musicNodeAnimation2]}
-        source={require('../../assets/images/floating-music-note.png')} />
+        source={require('../../assets/images/floating-music-note.png')}
+      />
       {/* Disc */}
       <View style={styles.wrapperLeft}>
         <Animated.Image
           style={[styles.image, discAnimation]}
-          source={require('../../assets/images/disc.png')} />
+          source={require('../../assets/images/disc.png')}
+        />
       </View>
     </React.Fragment>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   musicNode: {
@@ -107,16 +123,16 @@ const styles = StyleSheet.create({
     height: 20,
     tintColor: 'white',
     right: 48,
-    bottom: 25
+    bottom: 25,
   },
   wrapperLeft: {
-    width: '15%'
+    width: '15%',
   },
   image: {
     width: 42,
     height: 42,
     right: 0,
   },
-})
+});
 
-export default memo(BottomSingleVideoDiscComponent)
+export default memo(BottomSingleVideoDiscComponent);
