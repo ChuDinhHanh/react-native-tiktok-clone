@@ -1,10 +1,10 @@
 import React from 'react';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {Colors} from '../../constants/Colors';
-import {BannerData} from '../../data/BannerData';
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Colors } from '../../constants/Colors';
+import { BannerData } from '../../data/BannerData';
 import SessionComponent from './SessionComponent';
 import TextComponent from './TextComponent';
-import {GlobalStyle} from '../../styles/GlobalStyle';
+import { GlobalStyle } from '../../styles/GlobalStyle';
 import ButtonComponent from './ButtonComponent';
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
   widthOfTicket?: number;
   isNeedButtonTakeTicket: boolean;
   isVoucherInDetailScreen?: boolean;
+  backgroundColor?: string;
 }
 
 const VoucherComponent = (props: Props) => {
@@ -22,24 +23,28 @@ const VoucherComponent = (props: Props) => {
     widthOfTicket,
     isNeedButtonTakeTicket,
     isVoucherInDetailScreen,
+    backgroundColor
   } = props;
   return (
     <View
       style={[
         styles.wrapperBanner,
         isShadow && GlobalStyle.shadow,
-        {paddingVertical: padding ?? 10},
+        {
+          paddingVertical: padding ?? 10,
+          backgroundColor: backgroundColor ?? Colors.WHITE,
+        },
       ]}>
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal
         data={BannerData}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               console.log(item.id);
             }}>
-            <View style={[styles.bannerItem, {width: widthOfTicket ?? 200}]}>
+            <View style={[styles.bannerItem, { width: widthOfTicket ?? 200 }]}>
               <SessionComponent padding={5}>
                 <TextComponent
                   text={item.title}
@@ -58,8 +63,8 @@ const VoucherComponent = (props: Props) => {
                   fontSize={isVoucherInDetailScreen ? 18 : 12}
                 />
               </View>
-              <View style={[styles.dot, styles.dotLeft]} />
-              <View style={[styles.dot, styles.dotRight]} />
+              <View style={[styles.dot, styles.dotLeft, { backgroundColor: backgroundColor ?? Colors.WHITE }]} />
+              <View style={[styles.dot, styles.dotRight, { backgroundColor: backgroundColor ?? Colors.WHITE }]} />
               {isNeedButtonTakeTicket && (
                 <View style={styles.wrapperButtonTakeVoucher}>
                   <ButtonComponent
@@ -81,7 +86,6 @@ const VoucherComponent = (props: Props) => {
 
 const styles = StyleSheet.create({
   wrapperBanner: {
-    backgroundColor: Colors.WHITE,
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 10,
@@ -99,7 +103,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
-    backgroundColor: Colors.WHITE,
     top: 30,
   },
   dotLeft: {

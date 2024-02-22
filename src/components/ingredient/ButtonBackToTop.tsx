@@ -1,17 +1,18 @@
-import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {ScrollView, TouchableOpacity} from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import IconEntypo from 'react-native-vector-icons/Entypo';
-import {Colors} from '../../constants/Colors';
-import {StyleSheet} from 'react-native';
-import {GlobalStyle} from '../../styles/GlobalStyle';
+import { Colors } from '../../constants/Colors';
+import { StyleSheet } from 'react-native';
+import { GlobalStyle } from '../../styles/GlobalStyle';
 
 interface Props {
   scrollViewRef: React.RefObject<ScrollView>;
+  height?: number;
 }
 const ButtonBackToTop = (props: Props) => {
   console.log('===================ButtonBackToTop=================');
-  const {scrollViewRef} = props;
+  const { scrollViewRef, height } = props;
   const bottomTabHeight = () => {
     try {
       return useBottomTabBarHeight();
@@ -22,11 +23,11 @@ const ButtonBackToTop = (props: Props) => {
 
   return (
     <TouchableOpacity
-      onPress={() => scrollViewRef?.current?.scrollTo({y: 0, animated: true})}
+      onPress={() => scrollViewRef?.current?.scrollTo({ y: 0, animated: true })}
       style={[
         styles.container,
         GlobalStyle.shadow,
-        {bottom: bottomTabHeight() + 10, elevation: 10},
+        { bottom: height ? height : bottomTabHeight() + 10, elevation: 10 },
       ]}>
       <IconEntypo name="align-top" size={30} color={Colors.BLACK} />
     </TouchableOpacity>

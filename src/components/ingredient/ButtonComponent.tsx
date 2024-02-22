@@ -1,6 +1,6 @@
-import React, {ReactNode} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {Colors} from '../../constants/Colors';
+import React, { ReactNode } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Colors } from '../../constants/Colors';
 import SpaceComponent from './SpaceComponent';
 import RowComponent from './RowComponent';
 
@@ -21,6 +21,9 @@ interface Props {
   borderRadius?: number;
   paddingHorizontal?: number;
   paddingVertical?: number;
+  isVertical?: boolean;
+  borderWidth?: number;
+  borderColor?: string;
 }
 
 const ButtonComponent = (props: Props) => {
@@ -41,9 +44,12 @@ const ButtonComponent = (props: Props) => {
     padding,
     paddingHorizontal,
     paddingVertical,
+    isVertical,
+    borderWidth,
+    borderColor
   } = props;
   return (
-    <TouchableOpacity onPress={onPress} style={{marginLeft, borderRadius}}>
+    <TouchableOpacity onPress={onPress} style={{ marginLeft, borderRadius }}>
       <View
         style={[
           {
@@ -52,25 +58,51 @@ const ButtonComponent = (props: Props) => {
             paddingHorizontal,
             paddingVertical,
             borderRadius,
+            borderWidth,
+            borderColor,
           },
           styles.row,
         ]}>
-        <RowComponent justify={undefined} alignItems="center">
-          {previousIcon}
-          {previousImage}
-          <SpaceComponent width={SpaceComponentPrevious ?? 0} />
-          {titleChildren}
-          {textDecoration && isActive && (
-            <View
-              style={[
-                styles.textDecorationBottom,
-                {backgroundColor: color ?? Colors.WHITE},
-              ]}
-            />
-          )}
-          <SpaceComponent width={SpaceComponentBeHind ?? 0} />
-          {beHindIcon}
-        </RowComponent>
+        {
+          isVertical ?
+            <>
+              <View style={styles.wrapperButtonVertical}>
+                {previousIcon}
+                {previousImage}
+                <SpaceComponent width={SpaceComponentPrevious ?? 0} />
+                {titleChildren}
+                {textDecoration && isActive && (
+                  <View
+                    style={[
+                      styles.textDecorationBottom,
+                      { backgroundColor: color ?? Colors.WHITE },
+                    ]}
+                  />
+                )}
+                <SpaceComponent width={SpaceComponentBeHind ?? 0} />
+                {beHindIcon}
+              </View>
+            </>
+            :
+            <>
+              <RowComponent justify={undefined} alignItems="center">
+                {previousIcon}
+                {previousImage}
+                <SpaceComponent width={SpaceComponentPrevious ?? 0} />
+                {titleChildren}
+                {textDecoration && isActive && (
+                  <View
+                    style={[
+                      styles.textDecorationBottom,
+                      { backgroundColor: color ?? Colors.WHITE },
+                    ]}
+                  />
+                )}
+                <SpaceComponent width={SpaceComponentBeHind ?? 0} />
+                {beHindIcon}
+              </RowComponent>
+            </>
+        }
       </View>
     </TouchableOpacity>
   );
@@ -80,6 +112,9 @@ const styles = StyleSheet.create({
   textImage: {
     color: Colors.WHITE,
     fontSize: 18,
+  },
+  wrapperButtonVertical: {
+    alignItems: 'center'
   },
   textDecorationBottom: {
     alignSelf: 'center',

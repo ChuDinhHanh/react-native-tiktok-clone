@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Image,
   NativeScrollEvent,
@@ -25,20 +25,22 @@ import SpaceComponent from '../components/ingredient/SpaceComponent';
 import TextComponent from '../components/ingredient/TextComponent';
 import VoucherComponent from '../components/ingredient/VoucherComponent';
 import VoucherItemComponent from '../components/ingredient/VoucherItemComponent';
-import {Colors} from '../constants/Colors';
+import { Colors } from '../constants/Colors';
 import {
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
   WINDOW_HEIGHT,
 } from '../constants/Variables';
-import {SingleProductData} from '../data/SingleProductData';
-import {GlobalStyle} from '../styles/GlobalStyle';
-import {getFormatVietNamCurrency} from '../utils/FormatCurrency';
+import { SingleProductData } from '../data/SingleProductData';
+import { GlobalStyle } from '../styles/GlobalStyle';
+import { getFormatVietNamCurrency } from '../utils/FormatCurrency';
 import ButtonBackToTop from '../components/ingredient/ButtonBackToTop';
-import {handleScrollEvent} from '../utils/BackToTopListen';
+import { handleScrollEvent } from '../utils/BackToTopListen';
 import ShopItemInfoComponent from '../components/ingredient/ShopItemInfoComponent';
 import ShopProductsComponent from '../components/ingredient/ShopProductsComponent';
 import AllProductComponent from '../components/toptab/AllProductComponent';
+import BottomComponentDetailScreen from '../components/BottomComponentDetailScreen';
+import { NewOfferData } from '../data/NewOfferData';
 
 const DetailProductScreen = () => {
   console.log('====================DetailScreen================');
@@ -87,7 +89,7 @@ const DetailProductScreen = () => {
         <SessionComponent paddingNotTop={true} backgroundColor={Colors.WHITE}>
           <SpaceComponent height={10} />
           <RowComponent justify="space-between">
-            <View style={{width: '95%'}}>
+            <View style={{ width: '95%' }}>
               <ContentSingleVideo
                 color={Colors.BLACK}
                 numberOfLines={3}
@@ -95,7 +97,7 @@ const DetailProductScreen = () => {
                 padding={0}
               />
             </View>
-            <View style={{width: '5%', alignItems: 'flex-end'}}>
+            <View style={{ width: '5%', alignItems: 'flex-end' }}>
               <IconFontisto
                 style={{
                   paddingTop: 5,
@@ -172,7 +174,7 @@ const DetailProductScreen = () => {
         </View>
 
         {/* Payment and ship */}
-        <View style={{backgroundColor: Colors.WHITE}}>
+        <View style={{ backgroundColor: Colors.WHITE }}>
           <SessionComponent>
             <TextComponent
               text="Hình thức thanh toán"
@@ -214,7 +216,7 @@ const DetailProductScreen = () => {
                 </View>
                 {/* line arrow*/}
                 <View
-                  style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+                  style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                   <View
                     style={{
                       height: 1,
@@ -264,7 +266,7 @@ const DetailProductScreen = () => {
         </View>
 
         {/* Feedback */}
-        <View style={{backgroundColor: Colors.WHITE, marginVertical: 10}}>
+        <View style={{ backgroundColor: Colors.WHITE, marginVertical: 10 }}>
           <SessionComponent>
             {/* Rate total qty */}
             <RowComponent alignItems="center" justify="flex-start">
@@ -309,7 +311,7 @@ const DetailProductScreen = () => {
         </View>
 
         {/* Shop */}
-        <View style={{backgroundColor: Colors.WHITE, marginVertical: 10}}>
+        <View style={{ backgroundColor: Colors.WHITE, marginVertical: 10 }}>
           <SessionComponent>
             <RowComponent justify={'space-between'} alignItems="center">
               <RowComponent justify={'flex-start'} alignItems="center">
@@ -407,7 +409,7 @@ const DetailProductScreen = () => {
         </View>
 
         {/* Introduce of product */}
-        <View style={{backgroundColor: Colors.WHITE, marginVertical: 10}}>
+        <View style={{ backgroundColor: Colors.WHITE, marginVertical: 10 }}>
           <SessionComponent>
             <TextComponent
               fontSize={18}
@@ -425,7 +427,7 @@ const DetailProductScreen = () => {
         </View>
 
         {/* Suggestion product */}
-        <View style={{backgroundColor: Colors.WHITE, marginVertical: 10}}>
+        <View style={{ backgroundColor: Colors.WHITE, marginVertical: 10 }}>
           <SessionComponent padding={10}>
             <TextComponent
               fontSize={18}
@@ -434,13 +436,13 @@ const DetailProductScreen = () => {
               fontWeight="bold"
             />
             <AllProductComponent
-              onPressOnProduct={() => console.log('suggestion product')}
-            />
+              onPressOnProduct={() => console.log('suggestion product')} data={NewOfferData} type={0} />
           </SessionComponent>
         </View>
       </ScrollView>
       {/* BackToTop button */}
-      {showBackToTopButton && <ButtonBackToTop scrollViewRef={ScrollViewRef} />}
+      {showBackToTopButton && <ButtonBackToTop height={100} scrollViewRef={ScrollViewRef} />}
+      <BottomComponentDetailScreen />
     </View>
   );
 };

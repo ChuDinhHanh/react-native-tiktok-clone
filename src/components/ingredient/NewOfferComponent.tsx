@@ -1,19 +1,24 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Colors} from '../../constants/Colors';
+import { Colors } from '../../constants/Colors';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
-import {getFormatVietNamCurrency} from '../../utils/FormatCurrency';
+import { getFormatVietNamCurrency } from '../../utils/FormatCurrency';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../router/Router';
+import { NEW_OFFER_SCREEN, STACK_NAVIGATION_SERVICE } from '../../constants/Screens';
 
 interface Props {
   title: string;
   productList: any;
   isBigBanner: boolean;
+  onPress: (id: number) => void;
 }
 
 const NewOfferComponent = (props: Props) => {
-  const {productList, title, isBigBanner} = props;
+  const { productList, title, isBigBanner, onPress } = props;
   return (
     <View style={[styles.wrapperNewOffer]}>
       <TextComponent
@@ -25,9 +30,7 @@ const NewOfferComponent = (props: Props) => {
       <RowComponent
         justify={'space-between'}
         alignItems="center"
-        onPress={() => {
-          console.log('see list product new offer');
-        }}>
+        onPress={() =>onPress(1)}>
         {/* List product */}
         {productList.map((item: any, index: number) => {
           return (

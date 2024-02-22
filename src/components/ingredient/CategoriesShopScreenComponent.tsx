@@ -1,20 +1,21 @@
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import {Colors} from '../../constants/Colors';
-import {DETAIL_SCREEN, STACK_NAVIGATION_SERVICE} from '../../constants/Screens';
-import {RootStackParamList} from '../../router/Router';
+import { Colors } from '../../constants/Colors';
+import { DETAIL_SCREEN, STACK_NAVIGATION_SERVICE } from '../../constants/Screens';
+import { RootStackParamList } from '../../router/Router';
 import AllProductComponent from '../toptab/AllProductComponent';
 import BestSellingDealComponent from '../toptab/BestSellingDealComponent';
 import CosmeticsComponent from '../toptab/CosmeticsComponent';
 import MallComponent from '../toptab/MallComponent';
 import MenClothesComponent from '../toptab/MenClothesComponent';
 import WomenClothesComponent from '../toptab/WomenClothesComponent';
+import { NewOfferData } from '../../data/NewOfferData';
 
 const TopTab = createMaterialTopTabNavigator();
 
-function CategoriesComponent(): JSX.Element {
+function CategoriesShopScreenComponent(): JSX.Element {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const handleOnPressOnProductEvent = (item: number) => {
@@ -48,7 +49,7 @@ function CategoriesComponent(): JSX.Element {
       }}>
       <TopTab.Screen name={'Tất cả'}>
         {() => (
-          <AllProductComponent onPressOnProduct={handleOnPressOnProductEvent} />
+          <AllProductComponent type={1} data={NewOfferData} onPressOnProduct={handleOnPressOnProductEvent} />
         )}
       </TopTab.Screen>
       <TopTab.Screen name={'Deal Bán Chạy'}>
@@ -82,4 +83,4 @@ function CategoriesComponent(): JSX.Element {
   );
 }
 
-export default CategoriesComponent;
+export default CategoriesShopScreenComponent;
