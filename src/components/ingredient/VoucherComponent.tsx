@@ -1,10 +1,10 @@
 import React from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../../constants/Colors';
-import { BannerData } from '../../data/BannerData';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Colors} from '../../constants/Colors';
+import {BannerData} from '../../data/BannerData';
 import SessionComponent from './SessionComponent';
 import TextComponent from './TextComponent';
-import { GlobalStyle } from '../../styles/GlobalStyle';
+import {GlobalStyle} from '../../styles/GlobalStyle';
 import ButtonComponent from './ButtonComponent';
 
 interface Props {
@@ -23,7 +23,7 @@ const VoucherComponent = (props: Props) => {
     widthOfTicket,
     isNeedButtonTakeTicket,
     isVoucherInDetailScreen,
-    backgroundColor
+    backgroundColor,
   } = props;
   return (
     <View
@@ -39,12 +39,12 @@ const VoucherComponent = (props: Props) => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={BannerData}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <TouchableOpacity
             onPress={() => {
               console.log(item.id);
             }}>
-            <View style={[styles.bannerItem, { width: widthOfTicket ?? 200 }]}>
+            <View style={[styles.bannerItem, {width: widthOfTicket ?? 200}]}>
               <SessionComponent padding={5}>
                 <TextComponent
                   text={item.title}
@@ -63,8 +63,20 @@ const VoucherComponent = (props: Props) => {
                   fontSize={isVoucherInDetailScreen ? 18 : 12}
                 />
               </View>
-              <View style={[styles.dot, styles.dotLeft, { backgroundColor: backgroundColor ?? Colors.WHITE }]} />
-              <View style={[styles.dot, styles.dotRight, { backgroundColor: backgroundColor ?? Colors.WHITE }]} />
+              <View
+                style={[
+                  styles.dot,
+                  styles.dotLeft,
+                  {backgroundColor: backgroundColor ?? Colors.WHITE},
+                ]}
+              />
+              <View
+                style={[
+                  styles.dot,
+                  styles.dotRight,
+                  {backgroundColor: backgroundColor ?? Colors.WHITE},
+                ]}
+              />
               {isNeedButtonTakeTicket && (
                 <View style={styles.wrapperButtonTakeVoucher}>
                   <ButtonComponent

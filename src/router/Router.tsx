@@ -1,9 +1,9 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import { Image } from 'react-native';
-import { Colors } from '../constants/Colors';
+import {Image} from 'react-native';
+import {Colors} from '../constants/Colors';
 import {
   BOTTOM_TAB_NAVIGATOR,
   CART_SCREEN,
@@ -18,7 +18,7 @@ import {
   STACK_NAVIGATION_SERVICE,
   STACK_NAVIGATOR_AUTHENTICATION,
 } from '../constants/Screens';
-import { INITIAL_SCREEN } from '../constants/SystemConstant';
+import {INITIAL_SCREEN} from '../constants/SystemConstant';
 import AddScreen from '../screens/AddScreen';
 import CartScreen from '../screens/CartScreen';
 import FlashSaleScreen from '../screens/FlashSaleScreen';
@@ -31,11 +31,13 @@ import SearchScreen from '../screens/SearchScreen';
 import ShopScreen from '../screens/ShopScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SplashScreen from '../screens/SplashScreen';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import {GlobalStyle} from '../styles/GlobalStyle';
 import HeaderSearchScreenComponent from '../components/HeaderSearchScreenComponent';
 import DetailProductScreen from '../screens/DetailProductScreen';
 import HeaderDetailScreenComponent from '../components/HeaderDetailScreenComponent';
 import HeaderNewOfferScreenComponent from '../components/HeaderNewOfferScreenComponent';
+import HeaderUserProfileScreenComponent from '../components/HeaderUserProfileScreenComponent';
+import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent';
 
 export type RootStackParamList = {
   HOME_SCREEN: undefined;
@@ -70,15 +72,14 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       screenOptions={{
         tabBarHideOnKeyboard: true,
-        tabBarStyle: { backgroundColor: Colors.BLACK },
-        headerShown: false,
+        tabBarStyle: {backgroundColor: Colors.BLACK},
         tabBarActiveTintColor: Colors.WHITE,
       }}>
       <BottomTab.Screen
         name="Trang chủ"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require('../assets/images/home.png')}
               style={[
@@ -87,13 +88,14 @@ function BottomTabNavigator() {
               ]}
             />
           ),
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
         name="Shop"
         component={ShopScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require('../assets/images/search.png')}
               style={[
@@ -102,6 +104,7 @@ function BottomTabNavigator() {
               ]}
             />
           ),
+          header: () => <HeaderShopScreenComponent />,
         }}
       />
       <BottomTab.Screen
@@ -109,7 +112,7 @@ function BottomTabNavigator() {
         component={AddScreen}
         options={{
           tabBarLabel: () => null,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require('../assets/images/new-video.png')}
               style={[
@@ -118,13 +121,14 @@ function BottomTabNavigator() {
               ]}
             />
           ),
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
         name="Hộp thư"
         component={NotificationsScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require('../assets/images/message.png')}
               style={[
@@ -133,13 +137,15 @@ function BottomTabNavigator() {
               ]}
             />
           ),
+          headerShown: false,
         }}
       />
+
       <BottomTab.Screen
         name="Hồ sơ"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require('../assets/images/user.png')}
               style={[
@@ -148,6 +154,7 @@ function BottomTabNavigator() {
               ]}
             />
           ),
+          header: () => <HeaderUserProfileScreenComponent />,
         }}
       />
     </BottomTab.Navigator>
@@ -173,22 +180,22 @@ function StackNavigatorMain() {
       <RootStack.Screen
         name={SPLASH_SCREEN}
         component={SplashScreen}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
       <RootStack.Screen
         name={BOTTOM_TAB_NAVIGATOR}
         component={BottomTabNavigator}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
       <RootStack.Screen
         name={STACK_NAVIGATOR_AUTHENTICATION}
         component={StackNavigatorAuthentication}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
       <RootStack.Screen
         name={STACK_NAVIGATION_SERVICE}
         component={StackNavigatorService}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
     </RootStack.Navigator>
   );
@@ -200,27 +207,27 @@ function StackNavigatorService() {
       <RootStack.Screen
         name={SEARCH_SCREEN}
         component={SearchScreen}
-        options={{ header: () => <HeaderSearchScreenComponent /> }}
+        options={{header: () => <HeaderSearchScreenComponent />}}
       />
       <RootStack.Screen
         name={DETAIL_SCREEN}
         component={DetailProductScreen}
-        options={{ header: () => <HeaderDetailScreenComponent /> }}
+        options={{header: () => <HeaderDetailScreenComponent />}}
       />
       <RootStack.Screen
         name={CART_SCREEN}
         component={CartScreen}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
       <RootStack.Screen
         name={NEW_OFFER_SCREEN}
         component={NewOfferScreen}
-        options={{ header: () => <HeaderNewOfferScreenComponent /> }}
+        options={{header: () => <HeaderNewOfferScreenComponent />}}
       />
       <RootStack.Screen
         name={FLASH_SALE_SCREEN}
         component={FlashSaleScreen}
-        options={{ header: () => false }}
+        options={{header: () => false}}
       />
     </RootStack.Navigator>
   );

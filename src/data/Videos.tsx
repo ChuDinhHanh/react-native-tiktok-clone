@@ -172,6 +172,7 @@ export const Videos = [
         parentId: null,
       },
     ],
+    totalView: 10000000,
   },
   {
     id: 2,
@@ -209,6 +210,7 @@ export const Videos = [
         parentId: null,
       },
     ],
+    totalView: 506000,
   },
   {
     id: 3,
@@ -232,6 +234,7 @@ export const Videos = [
       {id: 2, name: '#Messi'},
     ],
     comments: [],
+    totalView: 500,
   },
   {
     id: 4,
@@ -255,5 +258,6 @@ export const Videos = [
       {id: 2, name: '#Messi'},
     ],
     comments: [],
+    totalView: 99999,
   },
 ];

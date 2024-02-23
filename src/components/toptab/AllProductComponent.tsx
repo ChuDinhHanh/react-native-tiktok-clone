@@ -1,8 +1,8 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import ProductItem from '../ingredient/ProductItem';
 import ProductItemVertical from '../ingredient/ProductItemVertical';
-import { Colors } from '../../constants/Colors';
+import {Colors} from '../../constants/Colors';
 
 interface Props {
   data: any;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AllProductComponent = (props: Props) => {
-  const { onPressOnProduct, data, type } = props;
+  const {onPressOnProduct, data, type} = props;
 
   switch (type) {
     case 1:
@@ -26,8 +26,10 @@ const AllProductComponent = (props: Props) => {
             data={data}
             extraData={data}
             // ItemSeparatorComponent={}
-            renderItem={({ item }) => {
-              return <ProductItem item={item} onPressOnProduct={onPressOnProduct} />
+            renderItem={({item}) => {
+              return (
+                <ProductItem item={item} onPressOnProduct={onPressOnProduct} />
+              );
             }}
           />
         </View>
@@ -42,8 +44,13 @@ const AllProductComponent = (props: Props) => {
             data={data}
             extraData={data}
             // ItemSeparatorComponent={}
-            renderItem={({ item }) => {
-              return <ProductItemVertical item={item} onPressOnProduct={onPressOnProduct} />
+            renderItem={({item}) => {
+              return (
+                <ProductItemVertical
+                  item={item}
+                  onPressOnProduct={onPressOnProduct}
+                />
+              );
             }}
           />
         </View>
@@ -51,7 +58,6 @@ const AllProductComponent = (props: Props) => {
     default:
       break;
   }
-
 };
 
 const styles = StyleSheet.create({
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   wrapperVerticalItems: {
-    backgroundColor: Colors.WHITE
-  }
+    backgroundColor: Colors.WHITE,
+  },
 });
 export default AllProductComponent;

@@ -1,27 +1,34 @@
-import React, { useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React, {useRef, useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import NewOfferComponent from '../components/ingredient/NewOfferComponent';
 import RowComponent from '../components/ingredient/RowComponent';
 import SessionComponent from '../components/ingredient/SessionComponent';
 import SpaceComponent from '../components/ingredient/SpaceComponent';
 import VoucherComponent from '../components/ingredient/VoucherComponent';
-import { Colors } from '../constants/Colors';
-import { FLASH_SALE, NEW_OFFER, SALE_OFF, SCREEN_HEIGHT, SCREEN_WIDTH } from '../constants/Variables';
-import { BannerTopData } from '../data/BannerTopData';
-import { NewOfferData, NewOfferDataSale } from '../data/NewOfferData';
-import { handleScrollEvent } from '../utils/BackToTopListen';
+import {Colors} from '../constants/Colors';
+import {
+  FLASH_SALE,
+  NEW_OFFER,
+  SALE_OFF,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
+} from '../constants/Variables';
+import {BannerTopData} from '../data/BannerTopData';
+import {NewOfferData, NewOfferDataSale} from '../data/NewOfferData';
+import {handleScrollEvent} from '../utils/BackToTopListen';
 import BannerComponent from '../components/BannerComponent';
 import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent';
 import CategoriesComponent from '../components/ingredient/CategoriesShopScreenComponent';
 import ButtonBackToTop from '../components/ingredient/ButtonBackToTop';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../router/Router';
-import { NEW_OFFER_SCREEN, STACK_NAVIGATION_SERVICE } from '../constants/Screens';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../router/Router';
+import {NEW_OFFER_SCREEN, STACK_NAVIGATION_SERVICE} from '../constants/Screens';
 
 const ShopScreen = () => {
   console.log('=================ShopScreen===================');
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const ScrollViewRef = useRef<ScrollView>(null);
   const [showBackToTopButton, setShowBackToTopButton] = useState(false);
 
@@ -31,7 +38,7 @@ const ShopScreen = () => {
         navigation.navigate(STACK_NAVIGATION_SERVICE, {
           screen: NEW_OFFER_SCREEN,
           params: undefined,
-        } as any)
+        } as any);
         break;
       case FLASH_SALE:
         console.log('FLASH_SALE');
@@ -42,14 +49,11 @@ const ShopScreen = () => {
       default:
         break;
     }
-  }
+  };
 
   return (
     <View>
       <SessionComponent padding={10}>
-        {/* Header */}
-        <HeaderShopScreenComponent />
-        <SpaceComponent height={5} />
         <ScrollView
           onScroll={event =>
             handleScrollEvent(
@@ -82,14 +86,18 @@ const ShopScreen = () => {
           <SpaceComponent height={10} />
           <RowComponent justify={'space-between'} alignItems="center">
             <NewOfferComponent
-              onPress={(id) => { console.log(id) }}
+              onPress={id => {
+                console.log(id);
+              }}
               isBigBanner={false}
               title="Hàng Hiệu Giá Hời"
               productList={NewOfferDataSale}
             />
             <SpaceComponent width={10} />
             <NewOfferComponent
-              onPress={(id) => { console.log(id) }}
+              onPress={id => {
+                console.log(id);
+              }}
               isBigBanner={false}
               title="Flash Sale"
               productList={NewOfferDataSale}

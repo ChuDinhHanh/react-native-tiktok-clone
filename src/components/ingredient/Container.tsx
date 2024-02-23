@@ -6,15 +6,20 @@ interface Props {
   children: ReactNode;
   color?: string;
   isCenter: boolean;
+  notFullHeightScreen?: boolean;
 }
 
 const Container = (props: Props) => {
-  const {children, color, isCenter} = props;
+  const {children, color, isCenter, notFullHeightScreen} = props;
   return (
     <View
       style={[
         isCenter ? styles.iconContainerCenter : styles.iconContainer,
-        {backgroundColor: color ?? Colors.BLACK},
+        {
+          backgroundColor: color ?? Colors.BLACK,
+          width: '100%',
+          height: notFullHeightScreen ? 'auto' : '100%',
+        },
       ]}>
       {children}
     </View>
@@ -23,8 +28,6 @@ const Container = (props: Props) => {
 
 const styles = StyleSheet.create({
   iconContainerCenter: {
-    width: '100%',
-    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -9,5 +9,6 @@ export const Colors = {
   GREY_2: 'rgb(241 241 242)',
   GREY_3: 'rgb(176 177 181)',
   GREY_4: 'rgb(218 213 213)',
+  GREY_5: 'rgb(241 241 242)',
   YELLOW: 'rgb(251 203 21)',
 };

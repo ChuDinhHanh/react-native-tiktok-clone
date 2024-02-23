@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
-import { View } from 'react-native';
-import { Colors } from '../../constants/Colors';
+import React, {useMemo} from 'react';
+import {View} from 'react-native';
+import {Colors} from '../../constants/Colors';
 import PrintfStart from '../PrintfStart';
 import DefaultAvatar from '../common/DefaultAvatar';
 import ContentSingleVideo from './ContentSingleVideo';
@@ -14,7 +14,7 @@ interface Props {
 
 const FeedBackComponent = (props: Props) => {
   console.log('=================FeedBackComponent===================');
-  const { data } = props;
+  const {data} = props;
 
   const anonymousName = (name: string) => {
     if (!name || name.length < 3) {
@@ -32,7 +32,7 @@ const FeedBackComponent = (props: Props) => {
   return (
     <React.Fragment>
       {data?.map((item: any) => (
-        <View key={item.id} style={{ paddingVertical: 10 }}>
+        <View key={item.id} style={{paddingVertical: 10}}>
           <RowComponent justify="flex-start" alignItems="center">
             <DefaultAvatar
               size={30}

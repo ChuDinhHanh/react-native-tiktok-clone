@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, {ReactNode} from 'react';
+import {StyleSheet, View} from 'react-native';
 import IconEntypo from 'react-native-vector-icons/Entypo';
-import { Colors } from '../../constants/Colors';
+import {Colors} from '../../constants/Colors';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
 import SpaceComponent from './SpaceComponent';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const RateQtyProductComponent = (props: Props) => {
-  const { color, fontSize, rateQty, iconSize } = props;
+  const {color, fontSize, rateQty, iconSize} = props;
   return (
     <RowComponent justify={'flex-start'} alignItems="center">
       <IconEntypo name="star" size={iconSize ?? 15} color={Colors.YELLOW} />
