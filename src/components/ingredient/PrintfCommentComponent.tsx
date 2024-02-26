@@ -61,7 +61,10 @@ const PrintfChildrenCommentComponent = React.memo(
     }, [memoizedComments]);
     return (
       <>
-        <RowComponent alignItems="center" onPress={() => setSeeMore(!seeMore)}>
+        <RowComponent
+          alignItems="center"
+          onPress={() => setSeeMore(!seeMore)}
+          justify={undefined}>
           <View style={{width: '13%'}}></View>
           <View style={{width: '87%'}}>
             <RowComponent

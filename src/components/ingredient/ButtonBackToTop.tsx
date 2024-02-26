@@ -8,10 +8,11 @@ import {GlobalStyle} from '../../styles/GlobalStyle';
 
 interface Props {
   scrollViewRef: React.RefObject<ScrollView>;
+  height?: number;
 }
 const ButtonBackToTop = (props: Props) => {
   console.log('===================ButtonBackToTop=================');
-  const {scrollViewRef} = props;
+  const {scrollViewRef, height} = props;
   const bottomTabHeight = () => {
     try {
       return useBottomTabBarHeight();
@@ -26,7 +27,7 @@ const ButtonBackToTop = (props: Props) => {
       style={[
         styles.container,
         GlobalStyle.shadow,
-        {bottom: bottomTabHeight() + 10, elevation: 10},
+        {bottom: height ? height : bottomTabHeight() + 10, elevation: 10},
       ]}>
       <IconEntypo name="align-top" size={30} color={Colors.BLACK} />
     </TouchableOpacity>

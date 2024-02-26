@@ -7,6 +7,7 @@ interface Props {
   fontSize?: number;
   color?: string;
   fontFamily?: string;
+  width?: number;
   fontWeight?:
     | 'normal'
     | 'bold'
@@ -23,7 +24,8 @@ interface Props {
 }
 
 const TextComponent = (props: Props) => {
-  const {text, fontSize, color, fontFamily, fontWeight, textDecoration} = props;
+  const {text, fontSize, color, fontFamily, fontWeight, textDecoration, width} =
+    props;
   return (
     <Text
       style={{
@@ -32,6 +34,8 @@ const TextComponent = (props: Props) => {
         fontFamily: fontFamily,
         fontWeight,
         textDecorationLine: textDecoration ? 'line-through' : 'none',
+        flexWrap: 'wrap',
+        width,
       }}>
       {text}
     </Text>

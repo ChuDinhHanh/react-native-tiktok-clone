@@ -39,6 +39,8 @@ import {handleScrollEvent} from '../utils/BackToTopListen';
 import ShopItemInfoComponent from '../components/ingredient/ShopItemInfoComponent';
 import ShopProductsComponent from '../components/ingredient/ShopProductsComponent';
 import AllProductComponent from '../components/toptab/AllProductComponent';
+import BottomComponentDetailScreen from '../components/BottomComponentDetailScreen';
+import {NewOfferData} from '../data/NewOfferData';
 
 const DetailProductScreen = () => {
   console.log('====================DetailScreen================');
@@ -435,12 +437,17 @@ const DetailProductScreen = () => {
             />
             <AllProductComponent
               onPressOnProduct={() => console.log('suggestion product')}
+              data={NewOfferData}
+              type={0}
             />
           </SessionComponent>
         </View>
       </ScrollView>
       {/* BackToTop button */}
-      {showBackToTopButton && <ButtonBackToTop scrollViewRef={ScrollViewRef} />}
+      {showBackToTopButton && (
+        <ButtonBackToTop height={100} scrollViewRef={ScrollViewRef} />
+      )}
+      <BottomComponentDetailScreen />
     </View>
   );
 };

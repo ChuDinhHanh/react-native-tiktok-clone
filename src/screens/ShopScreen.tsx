@@ -6,26 +6,54 @@ import SessionComponent from '../components/ingredient/SessionComponent';
 import SpaceComponent from '../components/ingredient/SpaceComponent';
 import VoucherComponent from '../components/ingredient/VoucherComponent';
 import {Colors} from '../constants/Colors';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../constants/Variables';
+import {
+  FLASH_SALE,
+  NEW_OFFER,
+  SALE_OFF,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
+} from '../constants/Variables';
 import {BannerTopData} from '../data/BannerTopData';
 import {NewOfferData, NewOfferDataSale} from '../data/NewOfferData';
 import {handleScrollEvent} from '../utils/BackToTopListen';
 import BannerComponent from '../components/BannerComponent';
 import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent';
-import CategoriesComponent from '../components/ingredient/CategoriesComponent';
+import CategoriesComponent from '../components/ingredient/CategoriesShopScreenComponent';
 import ButtonBackToTop from '../components/ingredient/ButtonBackToTop';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../router/Router';
+import {NEW_OFFER_SCREEN, STACK_NAVIGATION_SERVICE} from '../constants/Screens';
 
 const ShopScreen = () => {
   console.log('=================ShopScreen===================');
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const ScrollViewRef = useRef<ScrollView>(null);
   const [showBackToTopButton, setShowBackToTopButton] = useState(false);
+
+  const handleClickBannerEvent = (id: number) => {
+    switch (id) {
+      case NEW_OFFER:
+        navigation.navigate(STACK_NAVIGATION_SERVICE, {
+          screen: NEW_OFFER_SCREEN,
+          params: undefined,
+        } as any);
+        break;
+      case FLASH_SALE:
+        console.log('FLASH_SALE');
+        break;
+      case SALE_OFF:
+        console.log('SALE_OFF');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <View>
       <SessionComponent padding={10}>
-        {/* Header */}
-        <HeaderShopScreenComponent />
-        <SpaceComponent height={5} />
         <ScrollView
           onScroll={event =>
             handleScrollEvent(
@@ -49,6 +77,7 @@ const ShopScreen = () => {
           <VoucherComponent isShadow={true} isNeedButtonTakeTicket={false} />
           {/* New offer */}
           <NewOfferComponent
+            onPress={handleClickBannerEvent}
             isBigBanner={true}
             title="Ưu Đãi Bạn Mới"
             productList={NewOfferData}
@@ -57,12 +86,18 @@ const ShopScreen = () => {
           <SpaceComponent height={10} />
           <RowComponent justify={'space-between'} alignItems="center">
             <NewOfferComponent
+              onPress={id => {
+                console.log(id);
+              }}
               isBigBanner={false}
               title="Hàng Hiệu Giá Hời"
               productList={NewOfferDataSale}
             />
             <SpaceComponent width={10} />
             <NewOfferComponent
+              onPress={id => {
+                console.log(id);
+              }}
               isBigBanner={false}
               title="Flash Sale"
               productList={NewOfferDataSale}

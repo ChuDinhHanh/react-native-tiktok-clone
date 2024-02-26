@@ -10,13 +10,14 @@ interface Props {
   fontSize?: number;
   color?: string;
   rateQty?: ReactNode;
+  iconSize?: number;
 }
 
 const RateQtyProductComponent = (props: Props) => {
-  const {color, fontSize, rateQty} = props;
+  const {color, fontSize, rateQty, iconSize} = props;
   return (
     <RowComponent justify={'flex-start'} alignItems="center">
-      <IconEntypo name="star" size={15} color={Colors.YELLOW} />
+      <IconEntypo name="star" size={iconSize ?? 15} color={Colors.YELLOW} />
       <TextComponent
         text={'4.8'}
         color={color ?? Colors.GREY}

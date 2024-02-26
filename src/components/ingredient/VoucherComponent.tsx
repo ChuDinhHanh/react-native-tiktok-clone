@@ -13,6 +13,7 @@ interface Props {
   widthOfTicket?: number;
   isNeedButtonTakeTicket: boolean;
   isVoucherInDetailScreen?: boolean;
+  backgroundColor?: string;
 }
 
 const VoucherComponent = (props: Props) => {
@@ -22,13 +23,17 @@ const VoucherComponent = (props: Props) => {
     widthOfTicket,
     isNeedButtonTakeTicket,
     isVoucherInDetailScreen,
+    backgroundColor,
   } = props;
   return (
     <View
       style={[
         styles.wrapperBanner,
         isShadow && GlobalStyle.shadow,
-        {paddingVertical: padding ?? 10},
+        {
+          paddingVertical: padding ?? 10,
+          backgroundColor: backgroundColor ?? Colors.WHITE,
+        },
       ]}>
       <FlatList
         showsHorizontalScrollIndicator={false}
@@ -58,8 +63,20 @@ const VoucherComponent = (props: Props) => {
                   fontSize={isVoucherInDetailScreen ? 18 : 12}
                 />
               </View>
-              <View style={[styles.dot, styles.dotLeft]} />
-              <View style={[styles.dot, styles.dotRight]} />
+              <View
+                style={[
+                  styles.dot,
+                  styles.dotLeft,
+                  {backgroundColor: backgroundColor ?? Colors.WHITE},
+                ]}
+              />
+              <View
+                style={[
+                  styles.dot,
+                  styles.dotRight,
+                  {backgroundColor: backgroundColor ?? Colors.WHITE},
+                ]}
+              />
               {isNeedButtonTakeTicket && (
                 <View style={styles.wrapperButtonTakeVoucher}>
                   <ButtonComponent
@@ -81,7 +98,6 @@ const VoucherComponent = (props: Props) => {
 
 const styles = StyleSheet.create({
   wrapperBanner: {
-    backgroundColor: Colors.WHITE,
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 10,
@@ -99,7 +115,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
-    backgroundColor: Colors.WHITE,
     top: 30,
   },
   dotLeft: {
