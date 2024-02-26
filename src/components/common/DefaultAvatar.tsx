@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {Colors} from '../../constants/Colors';
 
@@ -6,10 +6,12 @@ interface Props {
   name: string;
   image?: string;
   size?: number;
+  icon?: ReactNode;
+  color?: string;
 }
 
 const DefaultAvatar = (props: Props) => {
-  const {name, image, size} = props;
+  const {name, image, size, icon, color} = props;
 
   const generateColor = () => {
     const randomColor = Math.floor(Math.random() * 16777215)
@@ -38,10 +40,10 @@ const DefaultAvatar = (props: Props) => {
             {
               width: size ?? 40,
               height: size ?? 40,
-              backgroundColor: generateColor(),
+              backgroundColor: color ?? generateColor(),
             },
           ]}>
-          <Text style={styles.wrapperName}>{name}</Text>
+          {icon ?? <Text style={styles.wrapperName}>{name}</Text>}
         </View>
       )}
     </>

@@ -7,18 +7,31 @@ interface Props {
   color?: string;
   isCenter: boolean;
   notFullHeightScreen?: boolean;
+  notFullWidthScreen?: boolean;
+  marginRight?: number;
+  marginLeft?: number;
 }
 
 const Container = (props: Props) => {
-  const {children, color, isCenter, notFullHeightScreen} = props;
+  const {
+    marginLeft,
+    children,
+    color,
+    isCenter,
+    notFullHeightScreen,
+    notFullWidthScreen,
+    marginRight,
+  } = props;
   return (
     <View
       style={[
         isCenter ? styles.iconContainerCenter : styles.iconContainer,
         {
           backgroundColor: color ?? Colors.BLACK,
-          width: '100%',
+          width: notFullWidthScreen ? 'auto' : '100%',
           height: notFullHeightScreen ? 'auto' : '100%',
+          marginRight,
+          marginLeft,
         },
       ]}>
       {children}

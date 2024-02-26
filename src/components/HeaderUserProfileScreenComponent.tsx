@@ -1,42 +1,30 @@
-import React from 'react';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, {ReactNode} from 'react';
 import {Colors} from '../constants/Colors';
 import ButtonComponent from './ingredient/ButtonComponent';
 import RowComponent from './ingredient/RowComponent';
 import SessionComponent from './ingredient/SessionComponent';
 import TextComponent from './ingredient/TextComponent';
 
-const HeaderUserProfileScreenComponent = () => {
+interface Props {
+  firstIcon: ReactNode;
+  secondsIcon: ReactNode;
+  thirdIcon: ReactNode;
+  nameOfScreen: ReactNode;
+}
+
+const HeaderUserProfileScreenComponent = (props: Props) => {
+  const {firstIcon, secondsIcon, thirdIcon, nameOfScreen} = props;
   return (
     <SessionComponent backgroundColor={Colors.WHITE}>
       <RowComponent justify="space-between" alignItems="center">
+        <ButtonComponent onPress={() => {}} previousIcon={firstIcon} />
         <ButtonComponent
-          onPress={() => {}}
-          previousIcon={<Feather name="menu" size={30} color={Colors.BLACK} />}
-        />
-        <ButtonComponent
-          beHindIcon={
-            <FontAwesome name="chevron-down" size={18} color={Colors.BLACK} />
-          }
+          beHindIcon={secondsIcon}
           onPress={() => {}}
           SpaceComponentBeHind={5}
-          titleChildren={
-            <TextComponent
-              fontSize={20}
-              text="Chu Dinh Hanh"
-              color={Colors.BLACK}
-              fontWeight="bold"
-            />
-          }
+          titleChildren={nameOfScreen}
         />
-        <ButtonComponent
-          onPress={() => {}}
-          previousIcon={
-            <Ionicons name="footsteps-outline" size={30} color={Colors.BLACK} />
-          }
-        />
+        <ButtonComponent onPress={() => {}} previousIcon={thirdIcon} />
       </RowComponent>
     </SessionComponent>
   );

@@ -7,6 +7,7 @@ import {Colors} from '../constants/Colors';
 import {
   BOTTOM_TAB_NAVIGATOR,
   CART_SCREEN,
+  DETAIL_NOTIFICATION_SCREEN,
   DETAIL_SCREEN,
   FLASH_SALE_SCREEN,
   HOME_SCREEN,
@@ -38,6 +39,12 @@ import HeaderDetailScreenComponent from '../components/HeaderDetailScreenCompone
 import HeaderNewOfferScreenComponent from '../components/HeaderNewOfferScreenComponent';
 import HeaderUserProfileScreenComponent from '../components/HeaderUserProfileScreenComponent';
 import HeaderShopScreenComponent from '../components/ingredient/HeaderShopScreenComponent';
+import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import TextComponent from '../components/ingredient/TextComponent';
+import DetailNotificationScreen from '../screens/DetailNotificationScreen';
 
 export type RootStackParamList = {
   HOME_SCREEN: undefined;
@@ -52,6 +59,7 @@ export type RootStackParamList = {
   NEW_OFFER_SCREEN: undefined;
   FLASH_SALE_SCREEN: undefined;
   CART_SCREEN: undefined;
+  DETAIL_NOTIFICATION_SCREEN: {id: number};
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -137,7 +145,35 @@ function BottomTabNavigator() {
               ]}
             />
           ),
-          headerShown: false,
+          header: () => (
+            <HeaderUserProfileScreenComponent
+              nameOfScreen={
+                <TextComponent
+                  fontSize={20}
+                  text="Hộp thư"
+                  color={Colors.BLACK}
+                  fontWeight="bold"
+                />
+              }
+              firstIcon={
+                <Ionicons
+                  name="add-circle-outline"
+                  size={30}
+                  color={Colors.BLACK}
+                />
+              }
+              secondsIcon={
+                <FontAwesome
+                  name="chevron-down"
+                  size={18}
+                  color={Colors.BLACK}
+                />
+              }
+              thirdIcon={
+                <AntDesign name="search1" size={30} color={Colors.BLACK} />
+              }
+            />
+          ),
         }}
       />
 
@@ -154,7 +190,33 @@ function BottomTabNavigator() {
               ]}
             />
           ),
-          header: () => <HeaderUserProfileScreenComponent />,
+          header: () => (
+            <HeaderUserProfileScreenComponent
+              nameOfScreen={
+                <TextComponent
+                  fontSize={20}
+                  text="Chu Dinh Hanh"
+                  color={Colors.BLACK}
+                  fontWeight="bold"
+                />
+              }
+              firstIcon={<Feather name="menu" size={30} color={Colors.BLACK} />}
+              secondsIcon={
+                <FontAwesome
+                  name="chevron-down"
+                  size={18}
+                  color={Colors.BLACK}
+                />
+              }
+              thirdIcon={
+                <Ionicons
+                  name="footsteps-outline"
+                  size={30}
+                  color={Colors.BLACK}
+                />
+              }
+            />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -228,6 +290,11 @@ function StackNavigatorService() {
         name={FLASH_SALE_SCREEN}
         component={FlashSaleScreen}
         options={{header: () => false}}
+      />
+      <RootStack.Screen
+        name={DETAIL_NOTIFICATION_SCREEN}
+        component={DetailNotificationScreen}
+        options={{header: () => true}}
       />
     </RootStack.Navigator>
   );
