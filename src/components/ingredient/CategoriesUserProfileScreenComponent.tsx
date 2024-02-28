@@ -1,11 +1,11 @@
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import {Colors} from '../../constants/Colors';
-import {DETAIL_SCREEN, STACK_NAVIGATION_SERVICE} from '../../constants/Screens';
-import {NewOfferData} from '../../data/NewOfferData';
-import {RootStackParamList} from '../../router/Router';
+import { Colors } from '../../constants/Colors';
+import { DETAIL_SCREEN, STACK_NAVIGATION_SERVICE } from '../../constants/Screens';
+import { NewOfferData } from '../../data/NewOfferData';
+import { RootStackParamList } from '../../router/Router';
 import AllProductComponent from '../toptab/AllProductComponent';
 import BestSellingDealComponent from '../toptab/BestSellingDealComponent';
 import MallComponent from '../toptab/MallComponent';
@@ -15,7 +15,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import RowComponent from './RowComponent';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import PrintfVideoLikedComponent from './PrintfVideoLikedComponent';
 
 const TopTab = createMaterialTopTabNavigator();
@@ -23,12 +23,16 @@ const TopTab = createMaterialTopTabNavigator();
 function CategoriesUserProfileScreenComponent(): JSX.Element {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const handleOnPressOnProductEvent = (item: number) => {
-    navigation.navigate(STACK_NAVIGATION_SERVICE, {
-      screen: DETAIL_SCREEN,
-      params: undefined,
-    } as any);
+    navigation.dispatch(
+      CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
+        screen: DETAIL_SCREEN,
+        params: undefined,
+      })
+    )
   };
+  
   return (
     <TopTab.Navigator
       screenOptions={{
@@ -51,14 +55,14 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       }}>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <RowComponent justify="center" alignItems="center">
               <Feather
                 name="menu"
                 color={focused ? Colors.BLACK : Colors.GREY}
                 size={25}
                 style={{
-                  transform: [{rotate: '90deg'}],
+                  transform: [{ rotate: '90deg' }],
                 }}
               />
               <AntDesign
@@ -75,7 +79,7 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       <TopTab.Screen
         name={'Deal Bán Chạy'}
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <EvilIcons
               name="lock"
               size={40}
@@ -87,7 +91,7 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       </TopTab.Screen>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <Fontisto
               name="favorite"
               size={24}
@@ -100,7 +104,7 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       </TopTab.Screen>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <AntDesign
               name="hearto"
               size={25}
