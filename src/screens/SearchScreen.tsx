@@ -1,6 +1,5 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import HeaderSearchScreenComponent from '../components/HeaderSearchScreenComponent';
 import Container from '../components/ingredient/Container';
 import PrintHistorySearch from '../components/ingredient/PrintHistorySearch';
 import SessionComponent from '../components/ingredient/SessionComponent';

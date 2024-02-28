@@ -12,4 +12,6 @@ export const Colors = {
   GREY_4: 'rgb(218 213 213)',
   GREY_5: 'rgb(241 241 242)',
   YELLOW: 'rgb(251 203 21)',
+  BLUE_PALE: 'rgb(23 189 196)',
+  NO_COLOR: 'transparent',
 };

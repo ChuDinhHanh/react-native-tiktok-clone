@@ -7,7 +7,7 @@ interface Props {
   fontSize?: number;
   color?: string;
   fontFamily?: string;
-  width?: number;
+  width?: number | 'auto';
   fontWeight?:
     | 'normal'
     | 'bold'

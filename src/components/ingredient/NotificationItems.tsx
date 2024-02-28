@@ -1,23 +1,19 @@
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {ReactNode, memo, useEffect, useState} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../../constants/Colors';
+import {
+  DETAIL_NOTIFICATION_SCREEN,
+  STACK_NAVIGATION_SERVICE,
+} from '../../constants/Screens';
+import {RootStackParamList} from '../../router/Router';
 import DefaultAvatar from '../common/DefaultAvatar';
-import ButtonComponent from './ButtonComponent';
 import RowComponent from './RowComponent';
 import SpaceComponent from './SpaceComponent';
 import TextComponent from './TextComponent';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../router/Router';
-import {
-  DETAIL_NOTIFICATION_SCREEN,
-  DETAIL_SCREEN,
-  SPLASH_SCREEN,
-  STACK_NAVIGATION_SERVICE,
-} from '../../constants/Screens';
-import {Screen} from 'react-native-screens';
 
 interface Props {
   item: any;
@@ -36,6 +32,12 @@ interface NotificationsType {
     avatar: string;
   };
 }
+
+type DetailNotificationParams = {
+  id: number;
+  type: number;
+  title?: string;
+};
 
 const NotificationItems = (props: Props) => {
   console.log('=================NotificationItems===================');
@@ -93,15 +95,20 @@ const NotificationItems = (props: Props) => {
     }));
   }, [item]);
 
-  const handleClickItemEvent = (id: number) => {
+  const handleClickItemEvent = (_id: number, _title: string) => {
     navigation.navigate(STACK_NAVIGATION_SERVICE, {
       screen: DETAIL_NOTIFICATION_SCREEN,
-      params: undefined,
+      params: {
+        id: _id,
+        type: notification.type,
+        title: _title,
+      },
     } as any);
   };
 
   return (
-    <TouchableOpacity onPress={() => handleClickItemEvent(notification.id)}>
+    <TouchableOpacity
+      onPress={() => handleClickItemEvent(notification.id, notification.title)}>
       <RowComponent justify="space-between" alignItems="center">
         {/* Left */}
         <RowComponent justify="flex-start" alignItems="center">
@@ -118,14 +125,7 @@ const NotificationItems = (props: Props) => {
           </View>
         </RowComponent>
         {/* Right */}
-        <ButtonComponent
-          onPress={() => {
-            console.log('see detail notifications');
-          }}
-          previousIcon={
-            <Entypo name="chevron-small-right" size={25} color={Colors.BLACK} />
-          }
-        />
+        <Entypo name="chevron-small-right" size={25} color={Colors.BLACK} />
       </RowComponent>
       <SpaceComponent height={10} />
     </TouchableOpacity>

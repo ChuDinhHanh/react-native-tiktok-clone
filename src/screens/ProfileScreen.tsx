@@ -1,19 +1,18 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import Container from '../components/ingredient/Container';
-import {Colors} from '../constants/Colors';
-import SessionComponent from '../components/ingredient/SessionComponent';
-import DefaultAvatar from '../components/common/DefaultAvatar';
-import ButtonAvatarComponent from '../components/ingredient/ButtonAvatarComponent';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import TextComponent from '../components/ingredient/TextComponent';
-import SpaceComponent from '../components/ingredient/SpaceComponent';
-import RowComponent from '../components/ingredient/RowComponent';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import ButtonAvatarComponent from '../components/ingredient/ButtonAvatarComponent';
 import ButtonComponent from '../components/ingredient/ButtonComponent';
 import CategoriesUserProfileScreenComponent from '../components/ingredient/CategoriesUserProfileScreenComponent';
-import {StyleSheet} from 'react-native';
+import Container from '../components/ingredient/Container';
+import RowComponent from '../components/ingredient/RowComponent';
+import SessionComponent from '../components/ingredient/SessionComponent';
+import SpaceComponent from '../components/ingredient/SpaceComponent';
+import TextComponent from '../components/ingredient/TextComponent';
+import {Colors} from '../constants/Colors';
 import {SCREEN_HEIGHT} from '../constants/Variables';
-import {ScrollView} from 'react-native';
 
 const ProfileScreen = () => {
   return (
@@ -37,6 +36,63 @@ const ProfileScreen = () => {
             />
             <SpaceComponent height={10} />
             <TextComponent text="@Chu Dinh Hanh" color={Colors.BLACK} />
+            <SpaceComponent height={20} />
+            <RowComponent justify="center">
+              <View>
+                <ButtonComponent
+                  isVertical={true}
+                  onPress={() => {}}
+                  titleTop={
+                    <TextComponent
+                      fontWeight="bold"
+                      text="137"
+                      color={Colors.BLACK}
+                    />
+                  }
+                  titleChildren={
+                    <TextComponent text="Đang follow" color={Colors.BLACK} />
+                  }
+                />
+                {/* New register */}
+                <View style={styles.countNotification}>
+                  <RowComponent justify="center" alignItems="center">
+                    <TextComponent text="+" color={Colors.PINK} />
+                    <TextComponent text="1" color={Colors.BLACK} />
+                  </RowComponent>
+                </View>
+              </View>
+
+              <SpaceComponent width={40} />
+              <ButtonComponent
+                isVertical={true}
+                onPress={() => {}}
+                titleTop={
+                  <TextComponent
+                    fontWeight="bold"
+                    text="50"
+                    color={Colors.BLACK}
+                  />
+                }
+                titleChildren={
+                  <TextComponent text="Follower" color={Colors.BLACK} />
+                }
+              />
+              <SpaceComponent width={40} />
+              <ButtonComponent
+                isVertical={true}
+                onPress={() => {}}
+                titleTop={
+                  <TextComponent
+                    fontWeight="bold"
+                    text="478"
+                    color={Colors.BLACK}
+                  />
+                }
+                titleChildren={
+                  <TextComponent text="Thích" color={Colors.BLACK} />
+                }
+              />
+            </RowComponent>
             <SpaceComponent height={20} />
             <RowComponent justify="center" alignItems="center">
               <ButtonComponent
@@ -72,7 +128,7 @@ const ProfileScreen = () => {
                 }
               />
             </RowComponent>
-            <SpaceComponent height={10} />
+            <SpaceComponent height={20} />
             <ButtonComponent
               onPress={() => {}}
               backgroundColor={Colors.GREY_5}
@@ -82,6 +138,43 @@ const ProfileScreen = () => {
                 <TextComponent text="+ Thêm tiểu sử" color={Colors.BLACK} />
               }
             />
+            <SpaceComponent height={10} />
+            {/* order */}
+            <RowComponent justify="center" alignItems="center">
+              <ButtonComponent
+                onPress={() => {}}
+                previousIcon={
+                  <Ionicons name="cart-outline" size={25} color={Colors.PINK} />
+                }
+                SpaceComponentPrevious={5}
+                paddingHorizontal={10}
+                borderRadius={2}
+                titleChildren={
+                  <TextComponent text="Đơn hàng của bạn" color={Colors.BLACK} />
+                }
+              />
+              <SpaceComponent
+                width={0.5}
+                height={12}
+                backgroundColor={Colors.GREY}
+              />
+              <ButtonComponent
+                onPress={() => {}}
+                previousIcon={
+                  <MaterialIcons
+                    name="add-a-photo"
+                    size={20}
+                    color={Colors.PINK}
+                  />
+                }
+                SpaceComponentPrevious={5}
+                paddingHorizontal={10}
+                borderRadius={2}
+                titleChildren={
+                  <TextComponent text="Nối gót" color={Colors.BLACK} />
+                }
+              />
+            </RowComponent>
           </Container>
           <SpaceComponent height={10} />
         </SessionComponent>
@@ -98,6 +191,18 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: SCREEN_HEIGHT,
+  },
+  countNotification: {
+    position: 'absolute',
+    backgroundColor: Colors.PINK_PALE,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 5,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    right: 0,
+    top: -15,
   },
 });
 export default ProfileScreen;
