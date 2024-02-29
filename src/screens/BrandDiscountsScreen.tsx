@@ -8,6 +8,8 @@ import TextComponent from '../components/ingredient/TextComponent'
 import { SCREEN_HEIGHT } from '@gorhom/bottom-sheet'
 import TopSelectComponent from '../components/ingredient/TopSelectComponent'
 import CategoriesBrandDiscountComponent from '../components/ingredient/CategoriesBrandDiscountComponent'
+import HeaderBrandDiscountScreen from '../components/HeaderBrandDiscountScreen'
+import SpaceComponent from '../components/ingredient/SpaceComponent'
 
 const BrandDiscountsScreen = () => {
     return (
@@ -15,18 +17,27 @@ const BrandDiscountsScreen = () => {
             <ScrollView
                 showsVerticalScrollIndicator={false}
             >
-                {/* Avatar  */}
-                <ImageBackground
-                    source={require('./../assets/images/TikTokShopBanner.jpg')}
-                    style={{ width: '100%', height: SCREEN_HEIGHT * 0.4, zIndex: -99 }}
-                />
-                <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}>
-                    {/* Banner top select */}
-                    <SessionComponent>
-                        <TopSelectComponent />
-                    </SessionComponent>
+                <View>
+                    {/* Avatar  */}
+                    <ImageBackground
+                        source={require('./../assets/images/TikTokShopBanner.jpg')}
+                        style={[styles.image, { height: SCREEN_HEIGHT * 0.4, zIndex: -99 }]}
+                    />
+                    {/* Top */}
+                    <View style={styles.wrapperHeader}>
+                        <SessionComponent padding={0} paddingHorizontal={16}>
+                            {/* Header */}
+                            <HeaderBrandDiscountScreen />
+                        </SessionComponent>
+                    </View>
+                    {/* Bottom */}
+                    <View style={styles.wrapperTopSelected}>
+                        <SessionComponent padding={0} paddingHorizontal={16}>
+                            {/* Banner top select */}
+                            <TopSelectComponent />
+                        </SessionComponent>
+                    </View>
                 </View>
-                {/* Categories */}
                 <View style={styles.wrapperCategories}>
                     <CategoriesBrandDiscountComponent />
                 </View>
@@ -39,6 +50,18 @@ const styles = StyleSheet.create({
     wrapperCategories: {
         width: '100%',
         height: SCREEN_HEIGHT
+    },
+    wrapperHeader: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+    },
+    wrapperTopSelected: {
+        position: 'absolute', bottom: 1
+    },
+    image: {
+        width: '100%',
     }
 })
 export default BrandDiscountsScreen

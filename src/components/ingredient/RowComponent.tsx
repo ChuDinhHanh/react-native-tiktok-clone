@@ -6,25 +6,26 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import React, {ReactNode} from 'react';
-import {GlobalStyle} from '../../styles/GlobalStyle';
-import {Colors} from '../../constants/Colors';
+import React, { ReactNode } from 'react';
+import { GlobalStyle } from '../../styles/GlobalStyle';
+import { Colors } from '../../constants/Colors';
 
 interface Props {
   justify:
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | undefined;
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | undefined;
   children?: ReactNode;
   onPress?: () => void;
   alignItems?: string;
   marginVertical?: number;
   marginLeft?: number;
   isWrap?: boolean;
+  backgroundColor?: string;
 }
 
 const RowComponent = (props: Props) => {
@@ -36,6 +37,7 @@ const RowComponent = (props: Props) => {
     marginVertical,
     marginLeft,
     isWrap,
+    backgroundColor
   } = props;
 
   const localStyle = [
@@ -45,6 +47,7 @@ const RowComponent = (props: Props) => {
       alignItems,
       marginVertical,
       marginLeft,
+      backgroundColor
     },
   ];
 

@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, SafeAreaView, View } from 'react-native';
 import { Colors } from '../constants/Colors';
 import {
   BOTTOM_TAB_NAVIGATOR,
@@ -48,6 +48,10 @@ import TextComponent from '../components/ingredient/TextComponent';
 import DetailNotificationScreen from '../screens/DetailNotificationScreen';
 import DetailNotificationHeaderComponent from '../components/DetailNotificationHeaderComponent';
 import BrandDiscountsScreen from '../screens/BrandDiscountsScreen';
+import SpaceComponent from '../components/ingredient/SpaceComponent';
+import { StatusBar } from 'react-native';
+import RowComponent from '../components/ingredient/RowComponent';
+import HeaderBrandDiscountScreen from '../components/HeaderBrandDiscountScreen';
 
 export type RootStackParamList = {
   HOME_SCREEN: undefined;
@@ -58,7 +62,7 @@ export type RootStackParamList = {
   STACK_NAVIGATOR_AUTHENTICATION: undefined;
   BOTTOM_TAB_NAVIGATOR: undefined;
   SEARCH_SCREEN: undefined;
-  STACK_NAVIGATION_SERVICE:  undefined;
+  STACK_NAVIGATION_SERVICE: undefined;
   NEW_OFFER_SCREEN: undefined;
   FLASH_SALE_SCREEN: undefined;
   CART_SCREEN: undefined;
@@ -311,7 +315,11 @@ function StackNavigatorService() {
       <RootStack.Screen
         name={BRAND_DISCOUNTS}
         component={BrandDiscountsScreen}
-        options={{ header: () => false }}
+        options={{
+          statusBarTranslucent:true,
+          statusBarColor:'transparent',
+          header: () => false
+        }}
       />
     </RootStack.Navigator>
   );

@@ -8,6 +8,7 @@ import RowComponent from './RowComponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Colors } from '../../constants/Colors';
 import { SCREEN_HEIGHT } from '../../constants/Variables';
+import SaleOffPercentComponent from './SaleOffPercentComponent';
 
 interface Props {
     item: any;
@@ -31,18 +32,7 @@ const TopSelectedItemComponent = (props: Props) => {
                             style={styles.image}
                         />
                         {/* SaleOff percent */}
-                        <View
-                            style={styles.saleOffBannerWrapper}
-                        >
-                            <RowComponent justify={'center'} alignItems="center">
-                                <MaterialCommunityIcons
-                                    name="transfer-down"
-                                    size={15}
-                                    color={Colors.WHITE}
-                                />
-                                <TextComponent text={item.saleOffPercent + '%'} fontSize={14} />
-                            </RowComponent>
-                        </View>
+                        <SaleOffPercentComponent bottom={0} left={0} borderTopRightRadius={3} percent={item.saleOffPercent}/>
                     </View>
                     <SpaceComponent height={5} />
                     {/* Price of product had sale */}
@@ -67,14 +57,5 @@ const styles = StyleSheet.create({
     image: {
         width: 120, height: Math.round((SCREEN_HEIGHT * 0.3) * 0.6)
     },
-    saleOffBannerWrapper: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        backgroundColor: Colors.PINK,
-        borderTopRightRadius: 3,
-        width: 100 / 2,
-        justifyContent: 'center',
-    }
 })
 export default TopSelectedItemComponent

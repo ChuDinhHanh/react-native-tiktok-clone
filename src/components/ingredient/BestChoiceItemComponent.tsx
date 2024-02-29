@@ -8,6 +8,7 @@ import SpaceComponent from './SpaceComponent'
 import SoldAndStarComponent from './SoldAndStarComponent'
 import { SCREEN_WIDTH } from '../../constants/Variables'
 import { getFormatVietNamCurrency } from '../../utils/FormatCurrency'
+import SaleOffPercentComponent from './SaleOffPercentComponent'
 
 interface Props {
     item: any
@@ -21,10 +22,13 @@ const BestChoiceItemComponent = (props: Props) => {
                 <View>
                     <RowComponent justify='flex-start'>
                         {/* Left */}
-                        <Image
-                            style={styles.image}
-                            source={{ uri: item.image }}
-                        />
+                        <View style={styles.wrapperImage}>
+                            <Image
+                                style={styles.image}
+                                source={{ uri: item.image }}
+                            />
+                            <SaleOffPercentComponent left={0} top={0} borderBottomRightRadius={10} percent={item.saleOffPercent} />
+                        </View>
                         <SpaceComponent width={10} />
                         {/* Right */}
                         <View style={styles.wrapperRight}>
@@ -65,9 +69,14 @@ const BestChoiceItemComponent = (props: Props) => {
 
 const styles = StyleSheet.create({
     image: {
+        width: '100%',
+        height: '100%'
+    },
+    wrapperImage: {
         width: 130,
         height: 130,
-        borderRadius: 10
+        borderRadius: 10,
+        overflow: 'hidden'
     },
     wrapperRight: {
         justifyContent: 'space-between'

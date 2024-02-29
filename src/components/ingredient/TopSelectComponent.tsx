@@ -13,11 +13,11 @@ const TopSelectComponent = () => {
     return (
         <View style={styles.container}>
             {/* Title */}
-            <SpaceComponent height={16} />
+            <SpaceComponent height={5} />
             <SessionComponent padding={0} paddingHorizontal={15}>
                 <TextComponent text='Top Selected' color={Colors.BLACK} fontSize={18} fontWeight='bold' />
             </SessionComponent>
-            <SpaceComponent height={16} />
+            <SpaceComponent height={5} />
             {/* Categories */}
             <FlatList
                 showsHorizontalScrollIndicator={false}
@@ -29,7 +29,7 @@ const TopSelectComponent = () => {
                     <TopSelectedItemComponent index={index} item={item} />
                 )}
             />
-            <SpaceComponent height={16} />
+            <SpaceComponent height={5} />
         </View>
     )
 }
