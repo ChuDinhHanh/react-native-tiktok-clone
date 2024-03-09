@@ -78,7 +78,9 @@ const DetailProductScreen = () => {
                 <SpaceComponent width={5} />
                 <TextComponent
                   fontSize={18}
-                  text={`${getFormatVietNamCurrency(SingleProductData.price)} đ`}
+                  text={`${getFormatVietNamCurrency(
+                    SingleProductData.price,
+                  )} đ`}
                 />
               </RowComponent>
               <TextComponent text={`Chiết khấu khách hàng đầu tiên`} />

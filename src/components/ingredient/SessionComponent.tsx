@@ -7,10 +7,17 @@ interface Props {
   paddingNotTop?: Boolean;
   backgroundColor?: string;
   paddingHorizontal?: number;
+  paddingVertical?: number;
 }
 const SessionComponent = (props: Props) => {
-  const {children, padding, paddingNotTop, backgroundColor, paddingHorizontal} =
-    props;
+  const {
+    children,
+    padding,
+    paddingNotTop,
+    backgroundColor,
+    paddingHorizontal,
+    paddingVertical,
+  } = props;
   return (
     <View
       style={{
@@ -18,6 +25,7 @@ const SessionComponent = (props: Props) => {
         paddingTop: paddingNotTop && 0,
         backgroundColor,
         paddingHorizontal,
+        paddingVertical,
       }}>
       {children}
     </View>

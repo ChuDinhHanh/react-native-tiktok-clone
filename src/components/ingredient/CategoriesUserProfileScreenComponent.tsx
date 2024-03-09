@@ -1,22 +1,24 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {CommonActions, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import { Colors } from '../../constants/Colors';
-import { DETAIL_SCREEN, STACK_NAVIGATION_SERVICE } from '../../constants/Screens';
-import { NewOfferData } from '../../data/NewOfferData';
-import { RootStackParamList } from '../../router/Router';
-import AllProductComponent from '../toptab/AllProductComponent';
-import BestSellingDealComponent from '../toptab/BestSellingDealComponent';
-import MallComponent from '../toptab/MallComponent';
-import WomenClothesComponent from '../toptab/WomenClothesComponent';
-import Feather from 'react-native-vector-icons/Feather';
+import {View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import RowComponent from './RowComponent';
-import { View } from 'react-native';
+import {Colors} from '../../constants/Colors';
+import {DETAIL_SCREEN, STACK_NAVIGATION_SERVICE} from '../../constants/Screens';
+import {RootStackParamList} from '../../router/Router';
 import PrintfVideoLikedComponent from './PrintfVideoLikedComponent';
+import RowComponent from './RowComponent';
+import {
+  FAVORITE_VIDEO,
+  HEART_VIDEO,
+  PRIVATE_VIDEO,
+  TOTAL,
+  TOTAL_VIDEO,
+} from '../../constants/Variables';
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -29,10 +31,10 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
         screen: DETAIL_SCREEN,
         params: undefined,
-      })
-    )
+      }),
+    );
   };
-  
+
   return (
     <TopTab.Navigator
       screenOptions={{
@@ -55,14 +57,14 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       }}>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({ focused }) => (
+          tabBarLabel: ({focused}) => (
             <RowComponent justify="center" alignItems="center">
               <Feather
                 name="menu"
                 color={focused ? Colors.BLACK : Colors.GREY}
                 size={25}
                 style={{
-                  transform: [{ rotate: '90deg' }],
+                  transform: [{rotate: '90deg'}],
                 }}
               />
               <AntDesign
@@ -73,13 +75,13 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
             </RowComponent>
           ),
         }}
-        name={'Tất cả'}>
+        name={TOTAL_VIDEO}>
         {() => <View></View>}
       </TopTab.Screen>
       <TopTab.Screen
-        name={'Deal Bán Chạy'}
+        name={PRIVATE_VIDEO}
         options={{
-          tabBarLabel: ({ focused }) => (
+          tabBarLabel: ({focused}) => (
             <EvilIcons
               name="lock"
               size={40}
@@ -91,7 +93,7 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
       </TopTab.Screen>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({ focused }) => (
+          tabBarLabel: ({focused}) => (
             <Fontisto
               name="favorite"
               size={24}
@@ -99,12 +101,12 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
             />
           ),
         }}
-        name={'Mall'}>
+        name={FAVORITE_VIDEO}>
         {() => <View></View>}
       </TopTab.Screen>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({ focused }) => (
+          tabBarLabel: ({focused}) => (
             <AntDesign
               name="hearto"
               size={25}
@@ -112,7 +114,7 @@ function CategoriesUserProfileScreenComponent(): JSX.Element {
             />
           ),
         }}
-        name={'Quần áo nữ'}>
+        name={HEART_VIDEO}>
         {() => <PrintfVideoLikedComponent />}
       </TopTab.Screen>
     </TopTab.Navigator>

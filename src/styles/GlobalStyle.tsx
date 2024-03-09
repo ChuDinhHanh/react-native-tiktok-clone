@@ -6,6 +6,11 @@ export const GlobalStyle = {
     height: 20,
     tintColor: Colors.WHITE,
   },
+  bottomTabBagIcon: {
+    width: 25,
+    height: 25,
+    tintColor: Colors.WHITE,
+  },
   bottomTabIconFocused: {},
   newVideoButton: {
     width: 60,

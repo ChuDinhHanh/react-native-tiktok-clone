@@ -3,7 +3,7 @@ import Container from '../components/ingredient/Container';
 import PrintfNotificationsComponent from '../components/ingredient/PrintfNotificationsComponent';
 import SessionComponent from '../components/ingredient/SessionComponent';
 import StreamVideoComponent from '../components/ingredient/StreamVideoComponent';
-import { Colors } from '../constants/Colors';
+import {Colors} from '../constants/Colors';
 
 const NotificationsScreen = () => {
   console.log('===================NotificationsScreen=================');

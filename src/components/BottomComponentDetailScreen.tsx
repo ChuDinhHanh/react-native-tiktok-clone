@@ -1,14 +1,24 @@
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import {Colors} from '../constants/Colors';
+import {RootStackParamList} from '../router/Router';
 import ButtonComponent from './ingredient/ButtonComponent';
 import RowComponent from './ingredient/RowComponent';
 import SessionComponent from './ingredient/SessionComponent';
 import TextComponent from './ingredient/TextComponent';
+import {DETAIL_STORE_SCREEN, MESSENGER_SCREEN} from '../constants/Screens';
 
 const BottomComponentDetailScreen = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const handleOnPressButtonEvent = (nameScreen: any) => {
+    navigation.navigate(nameScreen);
+  };
+
   return (
     <View style={styles.wrapper}>
       <SessionComponent>
@@ -18,9 +28,7 @@ const BottomComponentDetailScreen = () => {
             titleChildren={
               <TextComponent text="Cửa hàng" color={Colors.BLACK} />
             }
-            onPress={() => {
-              console.log();
-            }}
+            onPress={() => handleOnPressButtonEvent(DETAIL_STORE_SCREEN)}
             previousIcon={
               <IconEntypo name="shop" color={Colors.BLACK} size={20} />
             }
@@ -30,9 +38,7 @@ const BottomComponentDetailScreen = () => {
             titleChildren={
               <TextComponent text="Cửa hàng" color={Colors.BLACK} />
             }
-            onPress={() => {
-              console.log();
-            }}
+            onPress={() => handleOnPressButtonEvent(MESSENGER_SCREEN)}
             previousIcon={
               <IconAntDesign name="message1" color={Colors.BLACK} size={20} />
             }

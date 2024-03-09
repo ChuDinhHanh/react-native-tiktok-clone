@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {useCallback, useState} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
@@ -30,10 +30,10 @@ const HomeScreen = () => {
   const handleChooseOptionEvent = useCallback((idChoose: number) => {
     switch (idChoose) {
       case searchScreenId:
-        navigation.navigate(STACK_NAVIGATION_SERVICE, {
+        CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
           screen: SEARCH_SCREEN,
           params: undefined,
-        } as any);
+        });
         break;
       case forYouScreenId:
         console.log('===============search=====================');

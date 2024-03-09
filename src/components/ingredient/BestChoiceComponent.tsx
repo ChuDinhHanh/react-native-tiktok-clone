@@ -1,9 +1,9 @@
-import { View, Text, FlatList } from 'react-native'
-import React from 'react'
-import { BestChoiceData } from '../../data/CommonData'
+import {View, Text, FlatList} from 'react-native';
+import React from 'react';
+import {BestChoiceData} from '../../data/CommonData';
 import BestChoiceItemComponent from './BestChoiceItemComponent';
 import Container from './Container';
-import { Colors } from '../../constants/Colors';
+import {Colors} from '../../constants/Colors';
 
 const BestChoiceComponent = () => {
   const data = BestChoiceData;
@@ -13,12 +13,10 @@ const BestChoiceComponent = () => {
         scrollEnabled={false}
         data={data}
         extraData={data}
-        renderItem={({ item }) => (
-          <BestChoiceItemComponent item={item} />
-        )}
+        renderItem={({item}) => <BestChoiceItemComponent item={item} />}
       />
     </Container>
-  )
-}
+  );
+};
 
-export default BestChoiceComponent
+export default BestChoiceComponent;

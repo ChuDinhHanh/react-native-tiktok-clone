@@ -1,17 +1,18 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {CommonActions, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
-import { Colors } from '../../constants/Colors';
-import { DETAIL_SCREEN, STACK_NAVIGATION_SERVICE } from '../../constants/Screens';
-import { NewOfferData } from '../../data/NewOfferData';
-import { RootStackParamList } from '../../router/Router';
+import {Colors} from '../../constants/Colors';
+import {DETAIL_SCREEN, STACK_NAVIGATION_SERVICE} from '../../constants/Screens';
+import {NewOfferData} from '../../data/NewOfferData';
+import {RootStackParamList} from '../../router/Router';
 import AllProductComponent from '../toptab/AllProductComponent';
 import BestSellingDealComponent from '../toptab/BestSellingDealComponent';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
+import {DISCOUNT_PERCENTAGE, EXCLUSIVE_OFFERS} from '../../constants/Variables';
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -23,7 +24,7 @@ function CategoriesNewOfferScreenComponent(): JSX.Element {
       CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
         screen: DETAIL_SCREEN,
         params: undefined,
-      })
+      }),
     );
   };
   return (
@@ -45,7 +46,7 @@ function CategoriesNewOfferScreenComponent(): JSX.Element {
       }}>
       <TopTab.Screen
         options={{
-          tabBarLabel: ({ focused }) => (
+          tabBarLabel: ({focused}) => (
             <TextComponent
               text="Ưu đãi độc quyền"
               color={focused ? Colors.BLACK : Colors.GREY}
@@ -54,7 +55,7 @@ function CategoriesNewOfferScreenComponent(): JSX.Element {
             />
           ),
         }}
-        name={'Ưu đãi độc quyền'}>
+        name={EXCLUSIVE_OFFERS}>
         {() => (
           <AllProductComponent
             type={2}
@@ -66,9 +67,9 @@ function CategoriesNewOfferScreenComponent(): JSX.Element {
 
       <TopTab.Screen
         options={{
-          tabBarLabel: ({ icon, size, focused }: any) => (
+          tabBarLabel: ({icon, size, focused}: any) => (
             <RowComponent justify="space-between" alignItems="center">
-              <View style={{ transform: [{ rotate: '45deg' }] }}>
+              <View style={{transform: [{rotate: '45deg'}]}}>
                 <IconIonicons name="ticket" color={'orangered'} size={30} />
               </View>
               <TextComponent
@@ -80,7 +81,7 @@ function CategoriesNewOfferScreenComponent(): JSX.Element {
             </RowComponent>
           ),
         }}
-        name={'Giảm 50%'}>
+        name={DISCOUNT_PERCENTAGE}>
         {() => (
           <BestSellingDealComponent
             onPressOnProduct={handleOnPressOnProductEvent}

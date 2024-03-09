@@ -1,7 +1,7 @@
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, {useRef, useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import BannerComponent from '../components/BannerComponent';
 import ButtonBackToTop from '../components/ingredient/ButtonBackToTop';
 import CategoriesComponent from '../components/ingredient/CategoriesShopScreenComponent';
@@ -10,8 +10,12 @@ import RowComponent from '../components/ingredient/RowComponent';
 import SessionComponent from '../components/ingredient/SessionComponent';
 import SpaceComponent from '../components/ingredient/SpaceComponent';
 import VoucherComponent from '../components/ingredient/VoucherComponent';
-import { Colors } from '../constants/Colors';
-import { BRAND_DISCOUNTS, NEW_OFFER_SCREEN, STACK_NAVIGATION_SERVICE } from '../constants/Screens';
+import {Colors} from '../constants/Colors';
+import {
+  BRAND_DISCOUNTS,
+  NEW_OFFER_SCREEN,
+  STACK_NAVIGATION_SERVICE,
+} from '../constants/Screens';
 import {
   FLASH_SALE,
   NEW_OFFER,
@@ -19,11 +23,11 @@ import {
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
 } from '../constants/Variables';
-import { BannerTopData } from '../data/BannerTopData';
-import { NewOfferData, NewOfferDataSale } from '../data/NewOfferData';
-import { RootStackParamList } from '../router/Router';
-import { handleScrollEvent } from '../utils/BackToTopListen';
-import { Screen } from 'react-native-screens';
+import {BannerTopData} from '../data/BannerTopData';
+import {NewOfferData, NewOfferDataSale} from '../data/NewOfferData';
+import {RootStackParamList} from '../router/Router';
+import {handleScrollEvent} from '../utils/BackToTopListen';
+import {Screen} from 'react-native-screens';
 
 const ShopScreen = () => {
   console.log('=================ShopScreen===================');
@@ -35,10 +39,10 @@ const ShopScreen = () => {
   const handleClickBannerEvent = (id: number) => {
     switch (id) {
       case NEW_OFFER:
-        navigation.navigate(STACK_NAVIGATION_SERVICE, {
+        CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
           screen: NEW_OFFER_SCREEN,
           params: undefined,
-        } as any);
+        });
         break;
       case FLASH_SALE:
         console.log('FLASH_SALE');
@@ -89,12 +93,11 @@ const ShopScreen = () => {
               onPress={id => {
                 navigation.dispatch(
                   CommonActions.navigate({
-                    
                     name: STACK_NAVIGATION_SERVICE,
                     params: {
                       screen: BRAND_DISCOUNTS,
                     },
-                  })
+                  }),
                 );
               }}
               isBigBanner={false}

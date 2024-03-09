@@ -9,7 +9,7 @@ export const Videos = [
       name: 'Nguyen Van A',
       isOfficial: true,
     },
-    video: require('../assets/videos/vn.mp4'),
+    video: require('../assets/videos/video999.mp4'),
     isLiked: false,
     likeQty: 150,
     isFavorite: false,

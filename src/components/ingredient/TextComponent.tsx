@@ -21,11 +21,20 @@ interface Props {
     | '800'
     | '900';
   textDecoration?: boolean;
+  isUpperCase?: boolean;
 }
 
 const TextComponent = (props: Props) => {
-  const {text, fontSize, color, fontFamily, fontWeight, textDecoration, width} =
-    props;
+  const {
+    text,
+    fontSize,
+    color,
+    fontFamily,
+    fontWeight,
+    textDecoration,
+    width,
+    isUpperCase,
+  } = props;
   return (
     <Text
       style={{
@@ -36,6 +45,7 @@ const TextComponent = (props: Props) => {
         textDecorationLine: textDecoration ? 'line-through' : 'none',
         flexWrap: 'wrap',
         width,
+        textTransform: isUpperCase ? 'uppercase' : undefined,
       }}>
       {text}
     </Text>

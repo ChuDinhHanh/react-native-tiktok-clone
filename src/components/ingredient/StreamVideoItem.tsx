@@ -11,17 +11,33 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import TextComponent from './TextComponent';
 import Container from './Container';
 import SpaceComponent from './SpaceComponent';
+import {CommonActions, useNavigation} from '@react-navigation/native';
+import {STACK_NAVIGATION_SERVICE} from '../../constants/Screens';
 
 interface Props {
   item: any;
   isFirstItem: boolean;
 }
 const StreamVideoItem = (props: Props) => {
+  console.log('================StreamVideoItem====================');
   const {item, isFirstItem} = props;
+  const navigation = useNavigation();
+
+  const handleClickItemEvent = (id: number) => {
+    navigation.dispatch(
+      CommonActions.navigate(STACK_NAVIGATION_SERVICE, {
+        screen: isFirstItem
+          ? 'HOST_LIVE_STREAM_SCREEN'
+          : 'AUDIENCE_LIVE_STREAM_SCREEN',
+        params: undefined,
+      }),
+    );
+  };
+
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log('see video streaming', item.id);
+        handleClickItemEvent(item.id);
       }}>
       <Container
         notFullWidthScreen={true}

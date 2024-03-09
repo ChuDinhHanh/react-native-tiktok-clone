@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const FMCGComponent = () => {
+const DetailStoreScreen = () => {
   return (
     <View>
-      <Text>FMCGComponent</Text>
+      <Text>DetailStoreScreen</Text>
     </View>
   );
 };
 
-export default FMCGComponent;
+export default DetailStoreScreen;

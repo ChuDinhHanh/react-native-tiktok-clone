@@ -4,6 +4,8 @@ import {LiveStreamData} from '../../data/LiveStreamData';
 import StreamVideoItem from './StreamVideoItem';
 
 const StreamVideoComponent = () => {
+  console.log('================StreamVideoComponent====================');
+
   return (
     <View>
       <FlatList
